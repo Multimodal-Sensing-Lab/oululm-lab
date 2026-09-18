@@ -4,6 +4,10 @@ A participant toolkit for inspecting how text becomes tokens, how a tiny Transfo
 
 ## Start in the browser
 
+![Interactive learning interface for Workshop 001](../../assets/Screenshot_interactive_browser_workshop_001.png)
+
+*Screenshot of the interactive interface for learning how language models work.*
+
 Open **[the character workshop](index.html)**. Follow its eight chapters; use the **[word companion](llm_workshop/browser/words.html)** to see the same operations with whole words. Both calculate real predictions locally in JavaScript. Training curves and before/after checkpoints are recorded Python runs; editing a prompt never trains a model.
 
 - [Participant guide](llm_workshop/student-guide.html) · [Markdown version](STUDENT_GUIDE.md)

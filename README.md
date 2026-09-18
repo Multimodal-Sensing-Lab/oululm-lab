@@ -11,6 +11,10 @@
 
 ## Start learning
 
+![Interactive learning interface for Workshop 001](assets/Screenshot_interactive_browser_workshop_001.png)
+
+*Screenshot of the interactive interface for learning how language models work.*
+
 Download or clone this repository, then open **[the interactive workshop](learning/llm-workshop-001/index.html)** in your browser. GitHub's file viewer shows source; download the repository to run the HTML, or use a static website deployment. No installation, API key or network connection is needed for the main character and word experiments.
 
 For live domain-model generation and Python examples, follow the [workshop setup](learning/llm-workshop-001/README.md#python-setup). The Python server runs locally; GitHub Pages cannot execute Python.
