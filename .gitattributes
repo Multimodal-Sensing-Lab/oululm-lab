@@ -1,0 +1,13 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+# Preserve byte-level training data and checkpoint hashes on every platform.
+*.csv -text
+*.jsonl -text
+*.json -text
+*.pt binary
+*.jpeg binary
+*.png binary

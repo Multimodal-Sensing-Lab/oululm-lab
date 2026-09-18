@@ -1,0 +1,50 @@
+# Local environments, credentials and editors
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+# Downloads and local experiments; shipped checkpoints are explicitly allowed below
+**/data/raw/
+**/hf-cache/
+**/.cache/
+**/experiments/
+**/runs/*
+!learning/llm-workshop-001/runs/README.md
+!learning/llm-workshop-001/runs/browser_character_20260917_01/
+!learning/llm-workshop-001/runs/classroom_biology_01/
+!learning/llm-workshop-001/runs/classroom_tiny_01/
+!learning/llm-workshop-001/runs/domains500_characters_20260917_01/
+!learning/llm-workshop-001/runs/domains500_words_20260917_02/
+!learning/llm-workshop-001/runs/domains_characters_20260917_01/
+!learning/llm-workshop-001/runs/domains_words_20260917_01/
+!learning/llm-workshop-001/runs/words_classroom_01/
+!learning/llm-workshop-001/runs/words_garden_01/
+# New prepared data is local; committed fictional datasets are retained
+learning/llm-workshop-001/data/processed/*
+!learning/llm-workshop-001/data/processed/handbook_a/
+!learning/llm-workshop-001/data/processed/handbook_b/
+# No personal slides or recording artifacts
+*.pptx
+*.ppt
+*.mp4
+*.mov
+*.log
+node_modules/
