@@ -1,0 +1,76 @@
+{
+  "id": "stories_cpu_200",
+  "label": "Three stories · CPU · 200 updates",
+  "before": "untrained",
+  "after": "stories_cpu_200",
+  "device": "cpu",
+  "device_name": "x86_64",
+  "steps": 200,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.6223604679107666,
+      "validation": 3.6513278484344482
+    },
+    {
+      "step": 50,
+      "train": 2.096583127975464,
+      "validation": 2.226621627807617
+    },
+    {
+      "step": 100,
+      "train": 1.9775723218917847,
+      "validation": 2.1519477367401123
+    },
+    {
+      "step": 150,
+      "train": 1.7493038177490234,
+      "validation": 2.0664827823638916
+    },
+    {
+      "step": 200,
+      "train": 1.4312736988067627,
+      "validation": 2.20451021194458
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "examples/data/tiny_train.jsonl",
+      "documents": 3,
+      "sentences": 12,
+      "words": 109,
+      "characters": 521,
+      "bytes": 521,
+      "sha256": "2c3d98704d1b9b78ceef3b23ac6821a10dd92a687b7e047119ad84b4b5769116",
+      "preview": "Once upon a time a small robot opened a blue box. Inside was a red ball. The robot gave the ball to a friend. Together they played in the garden until the sun went down.",
+      "source_path": "examples/data/tiny_train.jsonl",
+      "omitted_documents": 0
+    },
+    "validation": {
+      "path": "examples/data/tiny_validation.jsonl",
+      "documents": 2,
+      "sentences": 8,
+      "words": 75,
+      "characters": 367,
+      "bytes": 367,
+      "sha256": "379939e7484e15c9cd1ed65fb3adf00914f45e568a35a90acf9942fdafaf6978",
+      "preview": "Once upon a time a boy built a house for a small bird. He painted the roof red. The bird carried a green leaf inside. The boy watched from the garden and smiled at his new friend.",
+      "source_path": "examples/data/tiny_validation.jsonl",
+      "omitted_documents": 0
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 1.0843849260127172,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/stories_cpu/step_200.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the sha sma la loownd bog for boa for a boon"
+  }
+}

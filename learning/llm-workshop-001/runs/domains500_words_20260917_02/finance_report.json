@@ -1,0 +1,80 @@
+{
+  "name": "finance",
+  "steps": 500,
+  "learning_rate": 0.0006,
+  "batch_size": 32,
+  "target_exposures": 483282,
+  "history": [
+    {
+      "step": 0,
+      "validation": 12.036612243159835,
+      "base_validation": 1.3464378448746959
+    },
+    {
+      "step": 100,
+      "validation": 4.155909131710199,
+      "base_validation": 3.12730513092894,
+      "train_batch": 4.337010383605957
+    },
+    {
+      "step": 200,
+      "validation": 3.15929379997279,
+      "base_validation": 3.012681734191705,
+      "train_batch": 3.0249128341674805
+    },
+    {
+      "step": 300,
+      "validation": 2.3327785451727214,
+      "base_validation": 3.3794430122612424,
+      "train_batch": 2.404083728790283
+    },
+    {
+      "step": 400,
+      "validation": 1.857131960706212,
+      "base_validation": 3.732114224996626,
+      "train_batch": 1.8127325773239136
+    },
+    {
+      "step": 500,
+      "validation": 1.6258567832885054,
+      "base_validation": 3.7456414761750594,
+      "train_batch": 1.6744616031646729
+    }
+  ],
+  "seconds": 4.332729980000295,
+  "checkpoint": "finance.pt",
+  "sha256": "a18ebc6a94bdc37e4206bb744a359030ace80046927572e539cac8cd990b175a",
+  "base_checkpoint": "base.pt",
+  "base_sha256": "26009a19da2765efe2c49ef99ac5ddbe5311754a027a0475c34e1c4fb87469ac",
+  "method": "Full-weight fine-tuning (not LoRA)",
+  "task": "prose",
+  "example_input": "the future value of",
+  "sample": {
+    "text": "1,000 dollars at 1% for 1 years amounts to 3%. 5.",
+    "ids": [
+      16,
+      11,
+      15,
+      15,
+      15,
+      868,
+      251,
+      16,
+      5,
+      1189,
+      16,
+      3324,
+      143,
+      3066,
+      18,
+      5,
+      13,
+      20,
+      13,
+      1
+    ],
+    "stop": "end token",
+    "input_tokens": 5,
+    "decoding": "greedy"
+  }
+}

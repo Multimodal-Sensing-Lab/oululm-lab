@@ -1,0 +1,97 @@
+{
+  "initial_model": "snapshot at start of this classroom run",
+  "seed": 1337,
+  "learning_rate": 0.003,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.6223604679107666,
+      "validation": 3.6513278484344482
+    },
+    {
+      "step": 10,
+      "train": 2.6520724296569824,
+      "validation": 2.6411826610565186
+    },
+    {
+      "step": 20,
+      "train": 2.649719476699829,
+      "validation": 2.4083282947540283
+    },
+    {
+      "step": 30,
+      "train": 2.443300485610962,
+      "validation": 2.2948944568634033
+    },
+    {
+      "step": 40,
+      "train": 2.227238655090332,
+      "validation": 2.262934684753418
+    },
+    {
+      "step": 50,
+      "train": 2.096583127975464,
+      "validation": 2.226621627807617
+    },
+    {
+      "step": 60,
+      "train": 1.9863313436508179,
+      "validation": 2.2047502994537354
+    },
+    {
+      "step": 70,
+      "train": 1.994187355041504,
+      "validation": 2.1766889095306396
+    },
+    {
+      "step": 80,
+      "train": 2.0432374477386475,
+      "validation": 2.2107603549957275
+    },
+    {
+      "step": 90,
+      "train": 1.9670252799987793,
+      "validation": 2.14760160446167
+    },
+    {
+      "step": 100,
+      "train": 1.9775723218917847,
+      "validation": 2.1519477367401123
+    }
+  ],
+  "samples": [
+    {
+      "step": 0,
+      "prompt": "the ",
+      "decoding": "greedy",
+      "before": "the \n<UNK>o\n<UNK>oit<UNK><UNK>nknIyT\nTr\nTptu\nIwf \nTevfSnkvaS",
+      "after": "the \n<UNK>o\n<UNK>oit<UNK><UNK>nknIyT\nTr\nTptu\nIwf \nTevfSnkvaS"
+    },
+    {
+      "step": 50,
+      "prompt": "the ",
+      "decoding": "greedy",
+      "before": "the \n<UNK>o\n<UNK>oit<UNK><UNK>nknIyT\nTr\nTptu\nIwf \nTevfSnkvaS",
+      "after": "the bobond a a bond a t a a the bonen a boa "
+    },
+    {
+      "step": 100,
+      "prompt": "the ",
+      "decoding": "greedy",
+      "before": "the \n<UNK>o\n<UNK>oit<UNK><UNK>nknIyT\nTr\nTptu\nIwf \nTevfSnkvaS",
+      "after": "the boa pe a bond a t bond boa boge boa boa "
+    },
+    {
+      "step": 100,
+      "prompt": "the ",
+      "decoding": "greedy",
+      "before": "the \n<UNK>o\n<UNK>oit<UNK><UNK>nknIyT\nTr\nTptu\nIwf \nTevfSnkvaS",
+      "after": "the boa pe a bond a t bond boa boge boa boa "
+    }
+  ],
+  "data_hashes": {
+    "train": "2c3d98704d1b9b78ceef3b23ac6821a10dd92a687b7e047119ad84b4b5769116",
+    "validation": "379939e7484e15c9cd1ed65fb3adf00914f45e568a35a90acf9942fdafaf6978"
+  },
+  "checkpoint_type": "inference comparison only; no optimizer-resume state"
+}

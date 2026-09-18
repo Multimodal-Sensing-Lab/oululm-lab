@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From text to prediction · A step-by-step walkthrough · OuluLLM Lab</title>
+  <link rel="stylesheet" href="../browser/style.css"><link rel="stylesheet" href="../assets/participant.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    section { scroll-margin-top: 16px; }
+    .scale { height: 24px; border: 1px solid #718096; border-radius: 5px; }
+    .signed { background: linear-gradient(to right, #3b4cc0, #dddcdc, #b40426); }
+    .weights { background: linear-gradient(to right, #f7fbff, #6baed6, #08306b); }
+    .scale-labels { display: flex; justify-content: space-between; font-size: .9rem; }
+    .example-controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .example-controls button { font: inherit; padding: 8px 14px; cursor: pointer; }
+    .matrix td { text-align: center; font-variant-numeric: tabular-nums; }
+    .matrix th { text-align: center; }
+    .matrix caption { text-align: left; padding: 12px 0; font-weight: 600; }
+    .formula { font-family: ui-monospace, monospace; background: #eaf0f8; padding: 16px; overflow-wrap: anywhere; }
+    :focus-visible { outline: 3px solid #15539a; outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body class="resource-page"><div class="resource-brand"><a href="../../index.html"><img src="../assets/OuluLLMLab_Logo_beige.jpeg" alt="OuluLLM Lab"></a><span>OuluLLM Lab · Learning toolkit</span></div><nav class="resource-nav" aria-label="Learning resources"><a href="../../index.html">Character workshop</a><a href="../browser/words.html">Word companion</a><a href="../student-guide.html">Participant guide</a><a href="../glossary.html">Glossary</a><a href="../001_text_to_predictions/walkthrough.html">Detailed reading</a><a href="../python-lab.html">Python lab &amp; scripts</a><a href="../references.html">References</a></nav>
+
+<main>
+<header id="start">
+  <h1>From text to prediction, one operation at a time</h1>
+  <p>This is the slow companion to the <a href="../../index.html">interactive browser</a>. Follow the character example there as you read. An optional Python desktop version is available with <code>python llm_workshop/001_text_to_predictions/ui.py</code>; references to desktop controls below apply to that version.</p>
+  <p>We will follow <code>the cat sat.</code> through the model. No previous knowledge of embeddings, matrices, attention or softmax is assumed. The small numerical examples below are deliberately chosen for hand calculation; the desktop displays the actual current model values.</p>
+  <div class="callout concept"><strong>Start with a known setup.</strong> In the browser select <em>Untrained · seed 1337</em>, or in the optional desktop click <em>Reset shared model</em>. Enter <code>the cat sat.</code>. This recreates the untrained model with seed 1337: two blocks, two attention heads per block, 64 features per token, and up to 64 input positions. A loaded checkpoint can change these dimensions. Editing text only recomputes the forward pass; it does not train the model.</div>
+</header>
+<section aria-labelledby="route">
+<h2 id="route">Your route through the lab</h2>
+<ol>
+  <li><a href="#tokens">Text → tokens → IDs</a>: what the colored tiles mean.</li>
+  <li><a href="#matrices">Read a matrix</a>: rows, columns, shapes and colors.</li>
+  <li><a href="#embeddings">Construct token and position embeddings</a>, then <a href="#addition">add them cell by cell</a>.</li>
+  <li><a href="#attention">Normalize → Q/K/V → scores</a>.</li>
+  <li><a href="#masking">Mask the future → softmax</a>: why rows sum to one.</li>
+  <li><a href="#mixture">Mix values → combine heads → residual → feed-forward</a>.</li>
+  <li><a href="#prediction">Produce vocabulary scores → choose the next token</a>.</li>
+  <li><a href="#messages">Translate the UI messages</a> and <a href="#experiments">try controlled experiments</a>.</li>
+</ol>
+</section>
+<section id="tokens">
+<h2>1. Split the text, then look up IDs</h2>
+<p>Open <em>001 · Text → tokens → IDs</em>. Here one Python character is one token. Spaces and punctuation count. This differs from a tokenizer that uses words or subwords.</p>
+<pre>Position:  0  1  2   3   4  5  6   7   8  9 10 11
+Token:     t  h  e  ' '  c  a  t  ' '  s  a  t  .</pre>
+<p>The vocabulary is a fixed list built from the local training stories: a reserved <code>&lt;UNK&gt;</code> entry followed by the sorted distinct characters. Each character's index in that list is its ID. Read the actual IDs in the lab's <em>Vocabulary</em> and <em>IDs</em> stages. ID 0 is reserved; this input interface rejects unsupported characters.</p>
+<p>An ID is an address, like a row number in a spreadsheet. It is not a measurement of meaning: a larger ID does not mean a more important token. All three occurrences of <code>t</code> have the same ID. Decoding looks up the characters again and joins them.</p>
+<div class="callout example"><strong>Tile colors are labels.</strong> The pastel colors cycle through a fixed palette by input position. They do not encode embedding values, probabilities or meaning. A pink “unknown” tile marks an unsupported character. The heatmaps in the next topics use a different color system.</div>
+</section>
+<section id="matrices">
+<h2>2. Read the numbers behind a heatmap</h2>
+<p>A <strong>scalar</strong> is one number. A <strong>vector</strong> is a list of numbers. A <strong>matrix</strong> arranges numbers into rows and columns. A <strong>tensor</strong> is the general name, including arrays with extra axes such as batch and head.</p>
+<p><code>(12, 64)</code> means 12 rows and 64 columns: 768 scalar values. In an embedding plot, each row belongs to an input position and each column is a feature coordinate. <code>tokens[5, 2]</code> means “position 5, feature 2”, using zero-based indices.</p>
+<p>The model internally also has a batch axis. For one prompt, its input representation is <code>(1, 12, 64)</code>; the plot removes the leading 1. A column is not assigned a human label like “animal”, “past tense” or “importance”. Training can shape useful patterns across many coordinates.</p>
+<h3>Signed values: blue → pale → red</h3>
+<div class="scale signed" role="img" aria-label="Signed values: blue for negative, pale for zero, red for positive"></div>
+<div class="scale-labels"><span>−L · negative</span><span>0</span><span>+L · positive</span></div>
+<p>Each cell holds a number before it has a color. The current lab chooses a symmetric range from <code>−L</code> to <code>+L</code>, maps the value into that range, then uses the <code>coolwarm</code> palette. For example, with <code>L = 2</code>, −2 is the blue endpoint, 0 is pale and +2 is the red endpoint. A value of +1 lies three quarters of the way along the scale.</p>
+<div class="formula">color position = (value + L) / (2 × L)</div>
+<p>For the three embedding panels, L is the largest absolute value among all <em>displayed</em> cells across those panels. Thus an identical value has the same color in all three. Other signed views choose their own range. The range can change when you change text, head, block or model: compare the colorbar numbers, not just the shade. Older versions of the lab scaled each panel independently without centering zero.</p>
+<h3>Weights and masks: white → blue</h3>
+<div class="scale weights" role="img" aria-label="Weights and masks: near white for zero, dark blue for one"></div>
+<div class="scale-labels"><span>0</span><span>0.5</span><span>1</span></div>
+<p><code>attention</code> and <code>mask</code> use the <code>Blues</code> palette with a fixed range of 0 to 1. In attention, darker means more weight. In the mask, 1 means allowed and 0 means blocked. A blank cell in <code>masked_scores</code> represents negative infinity; a near-white cell in <code>attention</code> represents zero. Read the view name and colorbar to distinguish them.</p>
+<div class="callout misconception"><strong>Red is not “correct”; blue is not “incorrect”.</strong> Signed colors encode numerical sign and size. A colorful matrix from an untrained model does not show learned understanding.</div>
+</section>
+<section id="embeddings">
+<h2>3. Construct the token embedding matrix</h2>
+<p>Open <em>002 · Embeddings + positions</em>. The model owns a trainable table called <code>token_embedding.weight</code>, with one row per vocabulary entry and 64 numbers per row in this lab's default model.</p>
+<ol>
+<li>Take the ID of the first character, <code>t</code>.</li>
+<li>Select that row from the token table. Its 64 numbers form the first input position's token vector.</li>
+<li>Repeat for every input character, stacking the selected rows in text order.</li>
+</ol>
+<div class="formula">tokens[position, feature] = token_table[token_id_at_position, feature]</div>
+<p>The full table has shape <code>(vocabulary size, 64)</code>. The selected rows have shape <code>(12, 64)</code>. The plot shows only columns 0–7, so its visible rectangle is <code>(12, 8)</code>; all 64 columns still enter the model. It is a direct slice, not a compressed projection.</p>
+<p>The repeated <code>t</code> at positions 0, 6 and 10 selects the very same table row. Those token vectors match exactly, even though they appear at different locations.</p>
+<h3>Where do those 64 numbers originally come from?</h3>
+<p>In <code>tiny.py</code>, creating an <code>nn.Embedding</code> initializes its entries with random numbers using PyTorch's default embedding initialization (a normal distribution with mean 0 and standard deviation 1). <code>Session</code> sets seed 1337 before creating the model, making the initial model reproducible in the same environment. There is no hand-written meaning attached to an initial entry.</p>
+<p>During training, the optimizer updates these stored parameters to reduce next-token prediction loss. Loading a checkpoint restores stored values. Typing new text merely selects rows from the existing table; it does not generate a new table.</p>
+<h2>4. Construct the position embedding matrix</h2>
+<p>The model owns a <em>separate</em> trainable table, <code>position_embedding.weight</code>. Its default shape is <code>(64, 64)</code>: 64 possible positions, each described by 64 features. The two 64s have different jobs.</p>
+<ol>
+<li>Create position numbers <code>0, 1, …, 11</code> for this input.</li>
+<li>Look up row 0, then row 1, through row 11 in the position table.</li>
+<li>Stack them into a <code>(12, 64)</code> matrix, displaying the first eight features.</li>
+</ol>
+<div class="formula">positions[position, feature] = position_table[position, feature]</div>
+<p>This table is also randomly initialized and trainable. The position number selects a vector; it is not copied into every cell of that vector. These are <strong>learned absolute positions</strong>, not sine waves or rotary position calculations. With the same model and input length, changing letters leaves the position panel unchanged.</p>
+</section>
+<section id="addition">
+<h2>5. Add matching cells</h2>
+<p>The first block receives <code>combined = tokens + positions</code>. “Elementwise addition” means add corresponding entries: row 0 with row 0, feature 0 with feature 0, and so on. Nothing is appended, so the result still has 64 features per position.</p>
+<div class="formula">combined[i, f] = tokens[i, f] + positions[i, f]</div>
+<p>Here is an invented two-feature example for <code>aaa</code>. The token rows match; the position rows differ. Use the buttons to reveal each stage. Every cell shows its number as well as its color.</p>
+<div class="example-controls">
+<button type="button" id="embedding-prev" disabled>Previous</button>
+<button type="button" id="embedding-next">Next stage</button>
+<span id="embedding-stage" aria-live="polite">1 / 3 · Token vectors</span>
+</div>
+<div class="scroll" id="embedding-example">
+<table class="matrix"><caption>Illustrative token vectors (not model measurements)</caption><thead><tr><th scope="col">Position</th><th scope="col">Feature 0</th><th scope="col">Feature 1</th></tr></thead><tbody><tr><th scope="row">0 · a</th><td>0.20</td><td>−0.40</td></tr><tr><th scope="row">1 · a</th><td>0.20</td><td>−0.40</td></tr><tr><th scope="row">2 · a</th><td>0.20</td><td>−0.40</td></tr></tbody></table>
+</div>
+<p id="embedding-equation" aria-live="polite">Each a selects the same token-table row: [0.20, −0.40].</p>
+<details><summary>All the example numbers, also available without JavaScript</summary>
+<pre>token rows       position rows     combined rows
+[ 0.20, −0.40] + [ 0.10,  0.20] = [ 0.30, −0.20]
+[ 0.20, −0.40] + [−0.30,  0.10] = [−0.10, −0.30]
+[ 0.20, −0.40] + [ 0.00, −0.20] = [ 0.20, −0.60]</pre>
+<p>The example uses a fixed signed color range of −1 to +1 across all stages.</p></details>
+<p>For the actual first cell, read the live addition printed below the desktop's three plots. The repeated letters now have different combined vectors because they occupy different positions. In later blocks, representations also depend on the allowed context.</p>
+</section>
+<section id="attention">
+<h2>6. Enter a block and normalize each row</h2>
+<p>Open <em>003 · Inside a transformer</em>, select <em>Block 0</em>, and choose <code>input</code>. You are looking at the full combined matrix from step 5. Block 1 instead receives Block 0's output. “Block 0” means the first block: the selectors count from zero.</p>
+<p>A block first applies <strong>LayerNorm</strong> to each position's feature vector. It subtracts the row's mean and divides by the square root of its variance plus a small stabilizing constant; then it applies trainable scale and offset values. This controls the numerical scale entering attention. It does not mix positions, and it does not turn the row into probabilities. The normalization result is an intermediate computation, not a separate View option.</p>
+<h2>7. Project the normalized rows into Q, K and V</h2>
+<p>A <strong>linear projection</strong> is a weighted sum of input features plus a bias. For each output coordinate, multiply each input coordinate by its learned weight, add the products, then add the bias. A different set of weights produces a different coordinate.</p>
+<div class="formula">one output feature = input[0] × weight[0] + … + input[63] × weight[63] + bias</div>
+<p>The code computes three projections together, then splits them into:</p>
+<ul>
+<li><strong>Q, query:</strong> features used by the current position to match other positions.</li>
+<li><strong>K, key:</strong> features that queries are compared with.</li>
+<li><strong>V, value:</strong> information that will be mixed after the matching weights are calculated.</li>
+</ul>
+<p>These names describe the numerical roles. They are not literal questions, database keys or human-written facts. Their projection <em>parameters</em> persist between inputs; the resulting Q/K/V <em>activations</em> are recomputed from the current input.</p>
+<p>Each projection initially has 64 features. The model splits them into two heads of 32 features each: <code>head width = 64 / 2 = 32</code>. Internally Q has shape <code>(1, 2, 12, 32)</code>: batch, heads, positions, features. Choosing a head displays one <code>(12, 32)</code> slice. K and V have the same shape.</p>
+<h2>8. Compare every query with every key</h2>
+<p>Select <code>scores</code>. Cell <code>[i, j]</code> compares the query at position i with the key at position j. Multiply matching coordinates and add them (a <strong>dot product</strong>), then divide by the square root of the head width:</p>
+<div class="formula">score[i, j] = (Q[i, 0] × K[j, 0] + … + Q[i, 31] × K[j, 31]) / √32</div>
+<p>For a hand calculation with an invented head width of 2, take <code>Q[i] = [1, 2]</code> and <code>K[j] = [3, −1]</code>. The dot product is <code>1 × 3 + 2 × (−1) = 1</code>, so the scaled score is <code>1 / √2 ≈ 0.7071</code>. The real default head performs the same operation with 32 pairs of coordinates.</p>
+<p>Scaling by √32 helps control how large scores become as head width grows. Larger scores give more weight after softmax relative to other scores in the same row. Scores can be negative, zero or positive; they are not probabilities.</p>
+<p><strong>This explains <code>scores: (12, 12)</code>.</strong> There are 12 query positions and 12 key positions. Each of the 12 queries is compared with all 12 keys, giving 144 scores. The 32-feature dimension has been summed away in each dot product. These axes are positions, not vocabulary entries or embedding features.</p>
+<p>For example, row 4 is the reader <code>c</code>; column 0 is the source <code>t</code>. Row 4, column 11 compares <code>c</code> with the future <code>.</code>. That raw score exists at this stage, but the next operation prevents it from being used.</p>
+</section>
+<section id="masking">
+<h2>9. Prevent each position from reading its future</h2>
+<p>Select <code>mask</code>. The model predicts the next token using the prefix available at each position. Letting position 4 read position 5 would reveal the token it is supposed to predict during training.</p>
+<pre>Illustration with three positions; rows read columns:
+                   key 0   key 1   key 2
+query 0              1       0       0
+query 1              1       1       0
+query 2              1       1       1</pre>
+<p>The diagonal is allowed because the current input token is already known. Earlier positions are allowed; later ones are blocked. The same rule is used in every head. The mask is constructed from position order, not learned from examples.</p>
+<p>Select <code>masked_scores</code>. Allowed scores stay unchanged. Blocked scores become <code>−∞</code> (negative infinity), which the plot leaves blank. Setting them merely to zero would not work: <code>exp(0) = 1</code> would still give them a share of attention.</p>
+<h2>10. Convert each score row to attention weights</h2>
+<p>Select <code>attention</code>. <strong>Softmax</strong> turns a row of scores into nonnegative weights: exponentiate each score, then divide each result by the sum for that row. Since <code>exp(−∞) = 0</code>, blocked cells receive exactly zero.</p>
+<div class="formula">attention[i, j] = exp(masked_score[i, j]) / sum of exp(masked_score[i, k]) over all columns k</div>
+<p>For numerical stability, implementations can subtract the largest finite score in the row before exponentiating. That gives the same proportions without unnecessarily large exponentials.</p>
+<h3>Work through one row</h3>
+<p>This invented example has three positions. We inspect <strong>query row 1</strong>, so key 2 is in the future. Change the second score to see how the two allowed positions share one unit of weight. The masked future score remains irrelevant even though it is large.</p>
+<label for="score-slider">Raw score for key 1: <output id="score-value" for="score-slider">0.693</output></label>
+<input id="score-slider" type="range" min="-2" max="2" step="0.001" value="0.693">
+<div class="scroll">
+<table class="matrix"><caption>Illustrative query row 1: scores → mask → softmax</caption>
+<thead><tr><th scope="col">Operation</th><th scope="col">Key 0</th><th scope="col">Key 1</th><th scope="col">Key 2 (future)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Raw scores</th><td>0</td><td id="raw-score">≈ ln(2)</td><td>4</td></tr>
+<tr><th scope="row">Mask</th><td>1</td><td>1</td><td>0</td></tr>
+<tr><th scope="row">Masked scores</th><td>0</td><td id="masked-score">≈ ln(2)</td><td>−∞</td></tr>
+<tr><th scope="row">Exponentials</th><td>1</td><td id="exp-score">≈ 2</td><td>0</td></tr>
+<tr><th scope="row">Attention weights</th><td id="weight-0">≈ 0.3333</td><td id="weight-1">≈ 0.6667</td><td id="weight-2">0</td></tr>
+</tbody></table>
+</div>
+<p id="softmax-total" aria-live="polite">Row total: 1/3 + 2/3 + 0 = 1 (using the exact score ln(2)).</p>
+<noscript><p>The static example uses ln(2), approximately 0.693, giving exponentials [1, 2, 0] and weights [1/3, 2/3, 0]. Enable JavaScript to change the score.</p></noscript>
+<p><strong>Why does the lab print twelve 1.0s?</strong> It adds up each of the twelve attention rows. Every row divides its exponential values by their own total, so every row sums to 1, apart from floating-point rounding. The lab rounds these sums to five decimal places.</p>
+<p>This is a normalization check, not twelve correct predictions, equal attention everywhere, or proof of training. The first row is always <code>[1, 0, …, 0]</code> because only position 0 is allowed. Other rows can distribute weight unevenly. Columns do not generally sum to one.</p>
+</section>
+<section id="mixture">
+<h2>11. Use the weights to mix V rows</h2>
+<p>Select <code>weighted_values</code>. Attention weights say how much of each source value vector to include. Multiply each value row by its weight, then add the weighted rows:</p>
+<div class="formula">mixture[i, f] = attention[i, 0] × V[0, f] + … + attention[i, 11] × V[11, f]</div>
+<p>Continue the example with invented two-feature values: <code>V[0] = [2, 0]</code>, <code>V[1] = [0, 3]</code>, and <code>V[2] = [9, 9]</code>. At query 1, the future row contributes nothing.</p>
+<p class="formula" id="value-mixture" aria-live="polite">(1/3) × [2, 0] + (2/3) × [0, 3] + 0 × [9, 9] = [0.6667, 2.0000]</p>
+<p>Moving the slider above also changes this mixture. In the actual model, <code>(12, 12) @ (12, 32)</code> produces <code>(12, 32)</code> per head. The <code>@</code> symbol means matrix multiplication. Softmax acts on the <em>scores</em>; it does not directly average Q or K, and it does not output vocabulary probabilities.</p>
+<h2>12. Combine heads and add the first residual</h2>
+<p>Each head performs its own matching and mixing in parallel. The model concatenates the two 32-feature mixtures to form 64 features, applies a learned 64-to-64 output projection, then adds the original block input:</p>
+<div class="formula">after_attention_residual = input + projected_concatenated_head_mixtures</div>
+<p>A <strong>residual connection</strong> preserves the incoming representation and adds an update. Both sides must have the same shape. Here the result is <code>(12, 64)</code>.</p>
+<p>Select <code>after_attention_residual</code> and change the Head selector. The matrix stays the same: that selector changes which individual head is displayed, not which heads the model computes. This view already includes both heads.</p>
+<h2>13. Transform each position's features and add again</h2>
+<p>Next the block applies another LayerNorm and a <strong>feed-forward network (FFN)</strong>, called <code>mlp</code> in the code:</p>
+<ol>
+<li>Normalize each row of the first residual.</li>
+<li>Apply a learned linear transformation from 64 features to 256.</li>
+<li>Apply <strong>GELU</strong>, a smooth nonlinear activation that changes values nonlinearly; this lets the network do more than a single linear transformation.</li>
+<li>Apply a second learned transformation from 256 features back to 64.</li>
+<li>Add that 64-feature update to the first residual.</li>
+</ol>
+<div class="formula">feed_forward = FFN(LayerNorm(after_attention_residual))<br>output = after_attention_residual + feed_forward</div>
+<p>The <code>feed_forward</code> view shows the update <em>after</em> the projection back to 64 features, not the intermediate 256-feature matrix. <code>output</code> includes the second residual addition. The FFN uses the same parameters for every position and operates on each row separately; attention was the operation that mixed information between positions.</p>
+<p>The next block repeats these operations with its own parameters. The desktop inspects in <strong>evaluation mode</strong>, so dropout is off. During training, dropout randomly suppresses some intermediate values; that is a training operation, not part of the deterministic inspection shown here.</p>
+</section>
+<section id="prediction">
+<h2>14. Turn the final block output into vocabulary scores</h2>
+<p>After the last block, TinyGPT applies a final LayerNorm and a learned output projection, <code>lm_head</code>. Each 64-feature row becomes one score for each vocabulary entry. These scores are called <strong>logits</strong>.</p>
+<p>For 12 input positions, the full logits tensor has shape <code>(1, 12, vocabulary size)</code>. Each position predicts the token <em>after</em> it. During training, known targets are shifted one token ahead: the row for the first <code>t</code> predicts <code>h</code>, the next row predicts <code>e</code>, and so on.</p>
+<p>To continue the whole prompt, open <em>005 · Generate one token</em>. The lab uses the final position's logits (the row for the period), divides by temperature, and applies softmax <em>across vocabulary entries</em>. The bars are the probabilities for the next character.</p>
+<div class="callout concept"><strong>Two softmax operations, two different questions.</strong> Attention softmax divides weight among input positions to mix information inside a block. Output softmax divides probability among vocabulary tokens to predict the next character. Their axes and purposes differ.</div>
+<p>Click <em>Next token</em> to sample one token from the output distribution, or enable <em>Greedy</em> to choose the largest logit. The token is appended and the chart then predicts the following token. Temperature changes sampling probabilities; greedy selection is unaffected. Neither operation updates model parameters.</p>
+<h3>Where does learning happen?</h3>
+<p>In <em>004 · Train from scratch</em>, training compares logits with known next-token targets using cross-entropy loss, computes gradients with backpropagation, and lets the optimizer update parameters. This can change the embeddings, projections, normalizations and FFN weights. Computing logits or displaying a loss alone does not train anything.</p>
+</section>
+<section id="messages">
+<h2>Translate the desktop messages</h2>
+<div class="scroll"><table>
+<thead><tr><th scope="col">Message</th><th scope="col">Plain-language meaning</th></tr></thead>
+<tbody>
+<tr><td><code>scores: (12, 12)</code></td><td>12 reader positions × 12 source positions, for one head in one block. Cell [i, j] contains a scaled query–key dot product.</td></tr>
+<tr><td><code>Attention row sums: [1.0, …]</code></td><td>One sum per reader position. Row-wise softmax distributes one unit of weight over allowed sources. The displayed sums are rounded, not accuracy measurements.</td></tr>
+<tr><td>Masked scores are −infinity (blank); softmax makes them zero.</td><td>The future is excluded before normalization: exp(−∞) is zero. A blank masked score and a zero attention weight are two stages of the same exclusion.</td></tr>
+<tr><td>Q/K/V and attention refer to the selected head.</td><td>The plot shows one head's activations. Scores, masked scores and weighted_values are also specific to the selected head. The mask rule is shared.</td></tr>
+<tr><td>Residual and FFN views combine all heads.</td><td>These are full-width block representations after combining head outputs (or the input to those operations). Switching the displayed head does not remove other heads or change these matrices.</td></tr>
+<tr><td>The explicit block computation is checked against TinyGPT.forward on every refresh.</td><td><strong>This older wording was too broad and has been corrected.</strong> In topic 003, the code checks the reconstructed selected-block output against <code>block(hidden)</code>, which calls <code>Block.forward</code>. It uses <code>torch.testing.assert_close</code>, allowing floating-point tolerance, in evaluation mode. This is not a check of the whole model's logits, training quality or every intermediate matrix.</td></tr>
+</tbody></table></div>
+<h3>Every View at a glance</h3>
+<p>Shapes below use the default model and the 12-character example. The batch axis is omitted.</p>
+<div class="scroll"><table>
+<thead><tr><th scope="col">View</th><th scope="col">Shape</th><th scope="col">Rows × columns</th></tr></thead>
+<tbody>
+<tr><td>input</td><td>(12, 64)</td><td>Positions × block input features</td></tr>
+<tr><td>Q, K, V</td><td>(12, 32) each</td><td>Positions × selected-head features</td></tr>
+<tr><td>scores, masked_scores</td><td>(12, 12) each</td><td>Query positions × key positions, selected head</td></tr>
+<tr><td>mask</td><td>(12, 12)</td><td>Query positions × key positions, shared 0/1 rule</td></tr>
+<tr><td>attention</td><td>(12, 12)</td><td>Query positions × key positions, selected-head weights</td></tr>
+<tr><td>weighted_values</td><td>(12, 32)</td><td>Positions × selected-head mixture features</td></tr>
+<tr><td>after_attention_residual</td><td>(12, 64)</td><td>Positions × full features after the first addition</td></tr>
+<tr><td>feed_forward</td><td>(12, 64)</td><td>Positions × full features of the FFN update</td></tr>
+<tr><td>output</td><td>(12, 64)</td><td>Positions × full features after the second addition</td></tr>
+</tbody></table></div>
+</section>
+<section id="experiments">
+<h2>Check your understanding in the real lab</h2>
+<ol>
+<li><strong>Enter <code>aaa</code> in topic 002.</strong> Expect three identical token rows, three different position rows, and different combined rows. The selected matrices have three rows; their feature width is unchanged.</li>
+<li><strong>Change <code>aaa</code> to <code>aba</code>.</strong> Only the middle token row changes. All position rows stay the same. Only the middle combined row changes before entering the first block.</li>
+<li><strong>Enter <code>the cat sat.</code> in topic 003.</strong> Follow input → Q/K/V → scores → mask → masked_scores → attention → weighted_values → after_attention_residual → feed_forward → output. The selector displays intermediates; it does not change computation order.</li>
+<li><strong>Compare <code>the cat</code> with <code>the dog</code>.</strong> Earlier output rows for the shared prefix <code>the </code> remain the same under causal masking. The plot's automatic signed range may change, so a color change alone is not proof that a number changed.</li>
+<li><strong>Change Head, then Block.</strong> One-head views generally change with Head; full residual/FFN views do not. Changing Block selects a different layer with different input and parameters.</li>
+<li><strong>Train in topic 004, then return.</strong> For the same text, learned values can change because the model parameters changed. Row-sum checks still yield approximately one; they were already true before training.</li>
+</ol>
+</section>
+<section id="source">
+<h2>Read the exact operations in the code</h2>
+<p>This guide describes this repository's TinyGPT and desktop lab. The small interactive examples use invented values, not a second neural network running in the browser.</p>
+<ul>
+<li><a href="tokenizer_demo.py">tokenizer_demo.py</a>: fixed vocabulary, character encoding and decoding.</li>
+<li><a href="../teaching.py">teaching.py</a>: <code>Session</code>, seed, default dimensions and shared model state.</li>
+<li><a href="../002_embeddings_and_positions/demo.py">002/demo.py</a>: <code>inspect</code> performs the two lookups and addition.</li>
+<li><a href="../003_attention_and_transformer/demo.py">003/demo.py</a>: <code>inspect</code> computes the block intermediates and checks the block output.</li>
+<li><a href="../tiny.py">tiny.py</a>: <code>CausalSelfAttention.forward</code>, <code>Block.forward</code> and <code>TinyGPT.forward</code>.</li>
+<li><a href="../visual/app.py">visual/app.py</a>: <code>heatmap</code>, <code>render_2</code> and <code>render_3</code> turn those values into plots.</li>
+</ul>
+<p>For the terminal version that pauses between operations, run:</p>
+<pre>python llm_workshop/002_embeddings_and_positions/demo.py --step --text "aaa"
+python llm_workshop/003_attention_and_transformer/demo.py --step --text "the cat sat."</pre>
+</section>
+</main>
+<script>
+'use strict';
+// Deliberately small illustrative matrices; these are not TinyGPT measurements.
+const embeddingStages = [
+  {name: 'Token vectors', rows: [[.2, -.4], [.2, -.4], [.2, -.4]], explanation: 'Each a selects the same token-table row: [0.20, −0.40].'},
+  {name: 'Position vectors', rows: [[.1, .2], [-.3, .1], [0, -.2]], explanation: 'Positions 0, 1 and 2 select different rows from a separate table.'},
+  {name: 'Combined vectors', rows: [[.3, -.2], [-.1, -.3], [.2, -.6]], explanation: 'Add matching cells. At position 1: [0.20, −0.40] + [−0.30, 0.10] = [−0.10, −0.30].'}
+];
+let embeddingStage = 0;
+function signedColor(value) {
+  // A simple three-stop approximation to the desktop coolwarm palette, L = 1.
+  const zero = [221, 220, 220];
+  const endpoint = value < 0 ? [59, 76, 192] : [180, 4, 38];
+  const amount = Math.min(1, Math.abs(value));
+  return `rgb(${zero.map((v, i) => Math.round(v + amount * (endpoint[i] - v))).join(',')})`;
+}
+function renderEmbedding() {
+  const stage = embeddingStages[embeddingStage];
+  document.getElementById('embedding-stage').textContent = `${embeddingStage + 1} / 3 · ${stage.name}`;
+  const rows = stage.rows.map((row, i) => `<tr><th scope="row">${i} · a</th>${row.map(v => `<td style="background:${signedColor(v)};color:#17283c">${v.toFixed(2)}</td>`).join('')}</tr>`).join('');
+  document.getElementById('embedding-example').innerHTML = `<table class="matrix"><caption>Illustrative ${stage.name.toLowerCase()} · fixed scale −1 to +1</caption><thead><tr><th scope="col">Position</th><th scope="col">Feature 0</th><th scope="col">Feature 1</th></tr></thead><tbody>${rows}</tbody></table>`;
+  document.getElementById('embedding-equation').textContent = stage.explanation;
+  document.getElementById('embedding-prev').disabled = embeddingStage === 0;
+  document.getElementById('embedding-next').disabled = embeddingStage === embeddingStages.length - 1;
+}
+document.getElementById('embedding-prev').addEventListener('click', () => { embeddingStage--; renderEmbedding(); });
+document.getElementById('embedding-next').addEventListener('click', () => { embeddingStage++; renderEmbedding(); });
+function renderAttention() {
+  const score = Number(document.getElementById('score-slider').value);
+  const exponential = Math.exp(score);
+  const w0 = 1 / (1 + exponential), w1 = exponential / (1 + exponential);
+  for (const id of ['score-value', 'raw-score', 'masked-score']) document.getElementById(id).textContent = score.toFixed(3);
+  document.getElementById('exp-score').textContent = exponential.toFixed(4);
+  [w0, w1, 0].forEach((weight, i) => {
+    const cell = document.getElementById(`weight-${i}`);
+    cell.textContent = weight.toFixed(4);
+    cell.style.background = `rgb(${[247, 251, 255].map((v, j) => Math.round(v + weight * ([8, 48, 107][j] - v))).join(',')})`;
+    cell.style.color = weight > .55 ? 'white' : '#17283c';
+  });
+  document.getElementById('softmax-total').textContent = `Row total: ${w0.toFixed(4)} + ${w1.toFixed(4)} + 0 = ${(w0 + w1).toFixed(4)} (displayed values are rounded).`;
+  document.getElementById('value-mixture').textContent = `${w0.toFixed(4)} × [2, 0] + ${w1.toFixed(4)} × [0, 3] + 0 × [9, 9] = [${(2 * w0).toFixed(4)}, ${(3 * w1).toFixed(4)}]`;
+}
+document.getElementById('score-slider').addEventListener('input', renderAttention);
+renderEmbedding();
+renderAttention();
+</script>
+</body>
+</html>

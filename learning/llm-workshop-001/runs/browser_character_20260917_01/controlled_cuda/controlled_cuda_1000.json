@@ -1,0 +1,156 @@
+{
+  "id": "controlled_cuda_1000",
+  "label": "Controlled sentences · CUDA · 1000 updates",
+  "before": "untrained",
+  "after": "controlled_cuda_1000",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 2080 SUPER",
+  "steps": 1000,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.5811612606048584,
+      "validation": 3.5770418643951416
+    },
+    {
+      "step": 50,
+      "train": 1.6665159463882446,
+      "validation": 2.019376516342163
+    },
+    {
+      "step": 100,
+      "train": 1.5363972187042236,
+      "validation": 1.5354524850845337
+    },
+    {
+      "step": 150,
+      "train": 1.226075530052185,
+      "validation": 1.355348825454712
+    },
+    {
+      "step": 200,
+      "train": 0.8756880164146423,
+      "validation": 0.9982342720031738
+    },
+    {
+      "step": 250,
+      "train": 0.7703894972801208,
+      "validation": 0.8099970817565918
+    },
+    {
+      "step": 300,
+      "train": 0.6427485346794128,
+      "validation": 0.6819422245025635
+    },
+    {
+      "step": 350,
+      "train": 0.5202012062072754,
+      "validation": 0.6244990229606628
+    },
+    {
+      "step": 400,
+      "train": 0.4502909183502197,
+      "validation": 0.43524158000946045
+    },
+    {
+      "step": 450,
+      "train": 0.37165385484695435,
+      "validation": 0.46253693103790283
+    },
+    {
+      "step": 500,
+      "train": 0.40022993087768555,
+      "validation": 0.397506982088089
+    },
+    {
+      "step": 550,
+      "train": 0.3740154802799225,
+      "validation": 0.3527364730834961
+    },
+    {
+      "step": 600,
+      "train": 0.36693018674850464,
+      "validation": 0.39286863803863525
+    },
+    {
+      "step": 650,
+      "train": 0.3048356771469116,
+      "validation": 0.31229183077812195
+    },
+    {
+      "step": 700,
+      "train": 0.32020536065101624,
+      "validation": 0.2950904667377472
+    },
+    {
+      "step": 750,
+      "train": 0.28104424476623535,
+      "validation": 0.2713105380535126
+    },
+    {
+      "step": 800,
+      "train": 0.2903234362602234,
+      "validation": 0.2861417531967163
+    },
+    {
+      "step": 850,
+      "train": 0.24486592411994934,
+      "validation": 0.3158283531665802
+    },
+    {
+      "step": 900,
+      "train": 0.2673070728778839,
+      "validation": 0.2540820837020874
+    },
+    {
+      "step": 950,
+      "train": 0.30550092458724976,
+      "validation": 0.2544275224208832
+    },
+    {
+      "step": 1000,
+      "train": 0.2798483669757843,
+      "validation": 0.24120859801769257
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/train.jsonl",
+      "documents": 351,
+      "sentences": 351,
+      "words": 2815,
+      "characters": 14848,
+      "bytes": 14848,
+      "sha256": "7ffa3850da606e010b257ada775da5bb5d4eef1ff5a4f523abe37e91c844109b",
+      "preview": "the young fox runs in the garden.",
+      "source_path": "examples/data/words/train.jsonl",
+      "omitted_documents": 81
+    },
+    "validation": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/validation.jsonl",
+      "documents": 55,
+      "sentences": 55,
+      "words": 445,
+      "characters": 2347,
+      "bytes": 2347,
+      "sha256": "bf1d817229497dbdecae0c572d29249e34d9bf98c0036d5072c74170a4a4cd53",
+      "preview": "the young horse runs in the field.",
+      "source_path": "examples/data/words/validation.jsonl",
+      "omitted_documents": 17
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 5.038566060975427,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/controlled_cuda/step_1000.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the young runs in the garden.\n\nththththththe"
+  }
+}

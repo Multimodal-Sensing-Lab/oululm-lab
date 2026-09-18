@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="llm_workshop/browser/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A self-paced interactive workshop: follow real numbers through a language model, then apply that understanding to teaching.">
+<title>Open the model · OuluLLM Lab</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="model-data.js"></script>
+<script defer src="experiment-data.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="teaching-notes.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="../../index.html#workspace">Skip to the experiment</a>
+<aside class="sidebar">
+<a class="brand brand-logo-only" href="../../index.html"><img class="brand-icon" src="../assets/OuluLLMLab_Logo_beige_l.jpeg" alt="OuluLLM Lab"><span><small>LEARN · EXPLORE · BUILD</small></span></a>
+<div class="course-label">OPEN THE MODEL</div>
+<nav id="chapters" aria-label="Workshop chapters"></nav>
+<div class="sidebar-bottom"><div class="course-time"><span>Eight chapters · learn at your own pace</span></div><a href="words.html">Word companion ↗</a><a href="../glossary.html">Glossary with examples ↗</a><a href="../001_text_to_predictions/walkthrough.html">Detailed reading ↗</a><a href="../python-lab.html">Python lab &amp; scripts ↗</a><a href="../references.html">References &amp; acknowledgements ↗</a></div>
+</aside>
+<div class="shell">
+<header class="topbar"><div><span class="live-dot"></span> INTERACTIVE LEARNING LAB <span class="top-sub">/ University teaching &amp; learning</span></div></header>
+<main id="workspace" tabindex="-1">
+<p class="subtle"><strong>Choose a learning route:</strong> Character workshop (this page) · <a href="words.html">Word companion: predict whole words with the same transformer →</a></p>
+<div class="chapter-heading"><div><p id="eyebrow" class="eyebrow"></p><h1 id="title"></h1><p id="subtitle" class="subtitle"></p></div><a class="session-link" href="../student-guide.html">Participant route ↗</a></div>
+<form id="prompt-form" class="prompt-bar">
+<label for="prompt">YOUR INPUT<span>Try a short sentence</span></label><input id="prompt" value="the cat sat." maxlength="64" autocomplete="off" spellcheck="false"><button type="submit" class="primary">Trace the text <span aria-hidden="true">↗</span></button>
+<label class="model-control" for="model">Model weights<select id="model"><option value="untrained">Untrained · seed 1337</option><option value="trained">Trained · 200 updates</option></select></label>
+</form>
+<div class="prompt-meta"><div id="examples"><span>TRY</span><button data-prompt="the cat sat.">the cat sat.</button><button data-prompt="aaa">aaa</button><button data-prompt="the dog ran.">the dog ran.</button></div><span id="model-meta"></span></div>
+<p class="subtle">This 32-entry character model completes text; it was not trained to answer questions. <a href="domain-lab.html?domain=qa">Ask “what is a cat?” in the question exercise →</a></p><p id="error" class="error" role="alert" hidden></p>
+<nav id="pipeline" class="pipeline" aria-label="Forward computation"></nav>
+<div class="lab-layout"><section id="scene" class="scene" aria-label="Interactive visualization"></section><aside class="explanation"><div class="detail-tabs" role="tablist" aria-label="Explanation depth"><button id="tab-explain" role="tab" aria-controls="detail" aria-selected="true" data-tab="explain">The idea</button><button id="tab-numbers" role="tab" aria-controls="detail" aria-selected="false" data-tab="numbers">The maths</button><button id="tab-python" role="tab" aria-controls="detail" aria-selected="false" data-tab="python">Python</button></div><div id="detail" role="tabpanel" aria-labelledby="tab-explain"></div></aside></div>
+<div class="lesson-bottom"><div id="takeaway" class="takeaway"></div><div class="step-navigation"><button id="previous" class="quiet">← Previous</button><button id="next" class="primary">Next chapter →</button></div></div>
+<footer><span>REAL TENSORS. VISIBLE OPERATIONS. ROOM FOR QUESTIONS.</span><a href="../references.html">Model, methods &amp; credits ↗</a></footer>
+</main>
+</div>
+<noscript><div class="no-script">This lab needs JavaScript to run the local model. You can still read the <a href="../001_text_to_predictions/walkthrough.html">complete walkthrough</a>.</div></noscript>
+</body>
+</html>

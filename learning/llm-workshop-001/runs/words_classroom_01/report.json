@@ -1,0 +1,794 @@
+{
+  "seed": 1337,
+  "steps": 600,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 2080 SUPER",
+  "torch_version": "2.5.1",
+  "learning_rate": 0.003,
+  "batch_size": 32,
+  "config": {
+    "vocab_size": 52,
+    "block_size": 16,
+    "n_layer": 2,
+    "n_head": 2,
+    "n_embd": 64,
+    "dropout": 0.0
+  },
+  "parameter_count": 107828,
+  "training_seconds": 2.9826367780042347,
+  "peak_allocated_bytes": 24814080,
+  "tokenizer": {
+    "kind": "word",
+    "version": 1,
+    "vocabulary": [
+      "<BOS>",
+      "<EOS>",
+      "<UNK>",
+      ".",
+      "bird",
+      "book",
+      "box",
+      "carries",
+      "cat",
+      "chair",
+      "classroom",
+      "dog",
+      "field",
+      "flower",
+      "fox",
+      "garden",
+      "green",
+      "grows",
+      "hall",
+      "happy",
+      "helper",
+      "horse",
+      "in",
+      "jumps",
+      "kind",
+      "leaf",
+      "library",
+      "light",
+      "moves",
+      "needs",
+      "new",
+      "park",
+      "plant",
+      "plays",
+      "quiet",
+      "rabbit",
+      "reads",
+      "rests",
+      "robot",
+      "room",
+      "runs",
+      "sings",
+      "sleeps",
+      "slowly",
+      "small",
+      "student",
+      "teacher",
+      "the",
+      "tree",
+      "water",
+      "yard",
+      "young"
+    ],
+    "normalization": "lowercase; words and .!?; canonical spaces"
+  },
+  "history": [
+    {
+      "step": 0,
+      "train": 4.035915226406521,
+      "validation": 4.049878968132867
+    },
+    {
+      "step": 50,
+      "train": 0.6908428333423756,
+      "validation": 0.7018366720941331
+    },
+    {
+      "step": 100,
+      "train": 0.6668653730992917,
+      "validation": 0.6913078493542142
+    },
+    {
+      "step": 150,
+      "train": 0.6571804770716915,
+      "validation": 0.6725975539949205
+    },
+    {
+      "step": 200,
+      "train": 0.6586516243440134,
+      "validation": 0.6780874596701728
+    },
+    {
+      "step": 250,
+      "train": 0.6506631873272083,
+      "validation": 0.669068455696106
+    },
+    {
+      "step": 300,
+      "train": 0.6554143481784397,
+      "validation": 0.6707500351799859
+    },
+    {
+      "step": 350,
+      "train": 0.6558064858118693,
+      "validation": 0.6664086182912191
+    },
+    {
+      "step": 400,
+      "train": 0.6464376484906232,
+      "validation": 0.6678406331274245
+    },
+    {
+      "step": 450,
+      "train": 0.6529844253151506,
+      "validation": 0.6839844452010261
+    },
+    {
+      "step": 500,
+      "train": 0.6436670232702184,
+      "validation": 0.6699565251668295
+    },
+    {
+      "step": 550,
+      "train": 0.6486078434520297,
+      "validation": 0.6857528620296054
+    },
+    {
+      "step": 600,
+      "train": 0.6426846654326828,
+      "validation": 0.6786682539516025
+    }
+  ],
+  "test": {
+    "before": 4.020166820949978,
+    "after": 0.671404692861769
+  },
+  "samples": [
+    {
+      "prompt": "the small cat",
+      "before": {
+        "prompt": "the small cat",
+        "ids": [
+          0,
+          47,
+          44,
+          8,
+          41,
+          0,
+          50,
+          10,
+          20,
+          45,
+          2,
+          28,
+          0,
+          5,
+          32,
+          14
+        ],
+        "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves <BOS> book plant fox",
+        "events": [
+          {
+            "id": 41,
+            "token": "sings",
+            "text": "the small cat sings"
+          },
+          {
+            "id": 0,
+            "token": "<BOS>",
+            "text": "the small cat sings <BOS>"
+          },
+          {
+            "id": 50,
+            "token": "yard",
+            "text": "the small cat sings <BOS> yard"
+          },
+          {
+            "id": 10,
+            "token": "classroom",
+            "text": "the small cat sings <BOS> yard classroom"
+          },
+          {
+            "id": 20,
+            "token": "helper",
+            "text": "the small cat sings <BOS> yard classroom helper"
+          },
+          {
+            "id": 45,
+            "token": "student",
+            "text": "the small cat sings <BOS> yard classroom helper student"
+          },
+          {
+            "id": 2,
+            "token": "<UNK>",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK>"
+          },
+          {
+            "id": 28,
+            "token": "moves",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves"
+          },
+          {
+            "id": 0,
+            "token": "<BOS>",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves <BOS>"
+          },
+          {
+            "id": 5,
+            "token": "book",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves <BOS> book"
+          },
+          {
+            "id": 32,
+            "token": "plant",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves <BOS> book plant"
+          },
+          {
+            "id": 14,
+            "token": "fox",
+            "text": "the small cat sings <BOS> yard classroom helper student <UNK> moves <BOS> book plant fox"
+          }
+        ],
+        "stop": "token budget",
+        "decoding": "greedy"
+      },
+      "after": {
+        "prompt": "the small cat",
+        "ids": [
+          0,
+          47,
+          44,
+          8,
+          42,
+          22,
+          47,
+          50,
+          3,
+          1
+        ],
+        "text": "the small cat sleeps in the yard.",
+        "events": [
+          {
+            "id": 42,
+            "token": "sleeps",
+            "text": "the small cat sleeps"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the small cat sleeps in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the small cat sleeps in the"
+          },
+          {
+            "id": 50,
+            "token": "yard",
+            "text": "the small cat sleeps in the yard"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the small cat sleeps in the yard."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the small cat sleeps in the yard."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    },
+    {
+      "prompt": "the happy teacher",
+      "before": {
+        "prompt": "the happy teacher",
+        "ids": [
+          0,
+          47,
+          19,
+          46,
+          18,
+          20,
+          39,
+          29,
+          35,
+          18,
+          19,
+          30,
+          35,
+          29,
+          36,
+          42
+        ],
+        "text": "the happy teacher hall helper room needs rabbit hall happy new rabbit needs reads sleeps",
+        "events": [
+          {
+            "id": 18,
+            "token": "hall",
+            "text": "the happy teacher hall"
+          },
+          {
+            "id": 20,
+            "token": "helper",
+            "text": "the happy teacher hall helper"
+          },
+          {
+            "id": 39,
+            "token": "room",
+            "text": "the happy teacher hall helper room"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the happy teacher hall helper room needs"
+          },
+          {
+            "id": 35,
+            "token": "rabbit",
+            "text": "the happy teacher hall helper room needs rabbit"
+          },
+          {
+            "id": 18,
+            "token": "hall",
+            "text": "the happy teacher hall helper room needs rabbit hall"
+          },
+          {
+            "id": 19,
+            "token": "happy",
+            "text": "the happy teacher hall helper room needs rabbit hall happy"
+          },
+          {
+            "id": 30,
+            "token": "new",
+            "text": "the happy teacher hall helper room needs rabbit hall happy new"
+          },
+          {
+            "id": 35,
+            "token": "rabbit",
+            "text": "the happy teacher hall helper room needs rabbit hall happy new rabbit"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the happy teacher hall helper room needs rabbit hall happy new rabbit needs"
+          },
+          {
+            "id": 36,
+            "token": "reads",
+            "text": "the happy teacher hall helper room needs rabbit hall happy new rabbit needs reads"
+          },
+          {
+            "id": 42,
+            "token": "sleeps",
+            "text": "the happy teacher hall helper room needs rabbit hall happy new rabbit needs reads sleeps"
+          }
+        ],
+        "stop": "token budget",
+        "decoding": "greedy"
+      },
+      "after": {
+        "prompt": "the happy teacher",
+        "ids": [
+          0,
+          47,
+          19,
+          46,
+          7,
+          47,
+          6,
+          22,
+          47,
+          39,
+          3,
+          1
+        ],
+        "text": "the happy teacher carries the box in the room.",
+        "events": [
+          {
+            "id": 7,
+            "token": "carries",
+            "text": "the happy teacher carries"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the happy teacher carries the"
+          },
+          {
+            "id": 6,
+            "token": "box",
+            "text": "the happy teacher carries the box"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the happy teacher carries the box in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the happy teacher carries the box in the"
+          },
+          {
+            "id": 39,
+            "token": "room",
+            "text": "the happy teacher carries the box in the room"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the happy teacher carries the box in the room."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the happy teacher carries the box in the room."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    },
+    {
+      "prompt": "the green plant",
+      "before": {
+        "prompt": "the green plant",
+        "ids": [
+          0,
+          47,
+          16,
+          32,
+          13,
+          14,
+          30,
+          45,
+          20,
+          1
+        ],
+        "text": "the green plant flower fox new student helper",
+        "events": [
+          {
+            "id": 13,
+            "token": "flower",
+            "text": "the green plant flower"
+          },
+          {
+            "id": 14,
+            "token": "fox",
+            "text": "the green plant flower fox"
+          },
+          {
+            "id": 30,
+            "token": "new",
+            "text": "the green plant flower fox new"
+          },
+          {
+            "id": 45,
+            "token": "student",
+            "text": "the green plant flower fox new student"
+          },
+          {
+            "id": 20,
+            "token": "helper",
+            "text": "the green plant flower fox new student helper"
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the green plant flower fox new student helper"
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      },
+      "after": {
+        "prompt": "the green plant",
+        "ids": [
+          0,
+          47,
+          16,
+          32,
+          29,
+          49,
+          22,
+          47,
+          50,
+          3,
+          1
+        ],
+        "text": "the green plant needs water in the yard.",
+        "events": [
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the green plant needs"
+          },
+          {
+            "id": 49,
+            "token": "water",
+            "text": "the green plant needs water"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the green plant needs water in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the green plant needs water in the"
+          },
+          {
+            "id": 50,
+            "token": "yard",
+            "text": "the green plant needs water in the yard"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the green plant needs water in the yard."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the green plant needs water in the yard."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    },
+    {
+      "prompt": "the quiet robot carries",
+      "before": {
+        "prompt": "the quiet robot carries",
+        "ids": [
+          0,
+          47,
+          34,
+          38,
+          7,
+          24,
+          29,
+          35,
+          20,
+          45,
+          2,
+          28,
+          0,
+          5,
+          32,
+          14
+        ],
+        "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves <BOS> book plant fox",
+        "events": [
+          {
+            "id": 24,
+            "token": "kind",
+            "text": "the quiet robot carries kind"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the quiet robot carries kind needs"
+          },
+          {
+            "id": 35,
+            "token": "rabbit",
+            "text": "the quiet robot carries kind needs rabbit"
+          },
+          {
+            "id": 20,
+            "token": "helper",
+            "text": "the quiet robot carries kind needs rabbit helper"
+          },
+          {
+            "id": 45,
+            "token": "student",
+            "text": "the quiet robot carries kind needs rabbit helper student"
+          },
+          {
+            "id": 2,
+            "token": "<UNK>",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK>"
+          },
+          {
+            "id": 28,
+            "token": "moves",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves"
+          },
+          {
+            "id": 0,
+            "token": "<BOS>",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves <BOS>"
+          },
+          {
+            "id": 5,
+            "token": "book",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves <BOS> book"
+          },
+          {
+            "id": 32,
+            "token": "plant",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves <BOS> book plant"
+          },
+          {
+            "id": 14,
+            "token": "fox",
+            "text": "the quiet robot carries kind needs rabbit helper student <UNK> moves <BOS> book plant fox"
+          }
+        ],
+        "stop": "context full",
+        "decoding": "greedy"
+      },
+      "after": {
+        "prompt": "the quiet robot carries",
+        "ids": [
+          0,
+          47,
+          34,
+          38,
+          7,
+          47,
+          6,
+          22,
+          47,
+          26,
+          3,
+          1
+        ],
+        "text": "the quiet robot carries the box in the library.",
+        "events": [
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet robot carries the"
+          },
+          {
+            "id": 6,
+            "token": "box",
+            "text": "the quiet robot carries the box"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the quiet robot carries the box in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet robot carries the box in the"
+          },
+          {
+            "id": 26,
+            "token": "library",
+            "text": "the quiet robot carries the box in the library"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the quiet robot carries the box in the library."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the quiet robot carries the box in the library."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    }
+  ],
+  "data_hashes": {
+    "train": "838d57c2f6021ad688b3b61f3ff86ff03f4fa09e1e1dd932a3bddf0ee68ab6b8",
+    "validation": "ebb33d88c2579b04ef7bc4cb5f6ac2083f4c02d60d4e412fba5549aadc993303",
+    "test": "bc1c1233a46d7f31521c61818eef54fbf07d2a9262dbb6fb28b4bc146e9ba675"
+  },
+  "corpus": {
+    "source": "Original controlled sentence templates; fictional teaching examples",
+    "seed": 42,
+    "split_method": "432/72/72 disjoint sentences, stratified by family; shared templates",
+    "scope": "Recombination of familiar words/templates; no claim of broad language or biology expertise",
+    "tokenizer": {
+      "kind": "word",
+      "version": 1,
+      "vocabulary": [
+        "<BOS>",
+        "<EOS>",
+        "<UNK>",
+        ".",
+        "bird",
+        "book",
+        "box",
+        "carries",
+        "cat",
+        "chair",
+        "classroom",
+        "dog",
+        "field",
+        "flower",
+        "fox",
+        "garden",
+        "green",
+        "grows",
+        "hall",
+        "happy",
+        "helper",
+        "horse",
+        "in",
+        "jumps",
+        "kind",
+        "leaf",
+        "library",
+        "light",
+        "moves",
+        "needs",
+        "new",
+        "park",
+        "plant",
+        "plays",
+        "quiet",
+        "rabbit",
+        "reads",
+        "rests",
+        "robot",
+        "room",
+        "runs",
+        "sings",
+        "sleeps",
+        "slowly",
+        "small",
+        "student",
+        "teacher",
+        "the",
+        "tree",
+        "water",
+        "yard",
+        "young"
+      ],
+      "normalization": "lowercase; words and .!?; canonical spaces"
+    },
+    "files": {
+      "train": {
+        "records": 432,
+        "sentences": 432,
+        "words": 3456,
+        "characters": 17396,
+        "tokens_with_boundaries": 4752,
+        "bytes": 41444,
+        "sha256": "838d57c2f6021ad688b3b61f3ff86ff03f4fa09e1e1dd932a3bddf0ee68ab6b8"
+      },
+      "validation": {
+        "records": 72,
+        "sentences": 72,
+        "words": 576,
+        "characters": 2897,
+        "tokens_with_boundaries": 792,
+        "bytes": 6905,
+        "sha256": "ebb33d88c2579b04ef7bc4cb5f6ac2083f4c02d60d4e412fba5549aadc993303"
+      },
+      "test": {
+        "records": 72,
+        "sentences": 72,
+        "words": 576,
+        "characters": 2875,
+        "tokens_with_boundaries": 792,
+        "bytes": 6883,
+        "sha256": "bc1c1233a46d7f31521c61818eef54fbf07d2a9262dbb6fb28b4bc146e9ba675"
+      }
+    }
+  },
+  "evaluation": "All non-padding targets in each split, including punctuation and EOS; no gradients on validation/test",
+  "checkpoint_type": "Inference/comparison only; no optimizer-resume state",
+  "scope": "Controlled templates with held-out sentences; shared vocabulary and grammar, not general English"
+}

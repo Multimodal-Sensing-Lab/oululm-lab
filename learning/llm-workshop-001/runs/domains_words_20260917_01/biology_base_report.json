@@ -1,0 +1,146 @@
+{
+  "name": "biology_base",
+  "domain": "biology",
+  "epochs": 5,
+  "steps": 1485,
+  "learning_rate": 0.003,
+  "batch_size": 32,
+  "main_domain_exposures": 47500,
+  "biology_replay_exposures": 0,
+  "target_exposures": 784460,
+  "training_seconds": 15.155098608025583,
+  "history": [
+    {
+      "step": 0,
+      "epoch": 0,
+      "train_batch": null,
+      "biology_validation": 8.030685968075353,
+      "finance_validation": 8.010461484242573
+    },
+    {
+      "step": 100,
+      "epoch": 0.3368421052631579,
+      "train_batch": 1.8708254098892212,
+      "biology_validation": 1.8548332229576163,
+      "finance_validation": 7.96964491413073
+    },
+    {
+      "step": 200,
+      "epoch": 0.6736842105263158,
+      "train_batch": 1.6887145042419434,
+      "biology_validation": 1.4971671246924305,
+      "finance_validation": 8.06468326840762
+    },
+    {
+      "step": 300,
+      "epoch": 1.0101052631578948,
+      "train_batch": 1.1558371782302856,
+      "biology_validation": 1.3270436763661178,
+      "finance_validation": 8.427911936397283
+    },
+    {
+      "step": 400,
+      "epoch": 1.3469473684210527,
+      "train_batch": 1.4606915712356567,
+      "biology_validation": 1.2067013091133032,
+      "finance_validation": 8.866770330169391
+    },
+    {
+      "step": 500,
+      "epoch": 1.6837894736842105,
+      "train_batch": 0.7435126900672913,
+      "biology_validation": 1.102596365796367,
+      "finance_validation": 8.953451560216811
+    },
+    {
+      "step": 600,
+      "epoch": 2.0202105263157897,
+      "train_batch": 0.8134832382202148,
+      "biology_validation": 1.0333656928597996,
+      "finance_validation": 9.262763334551888
+    },
+    {
+      "step": 700,
+      "epoch": 2.3570526315789473,
+      "train_batch": 0.9175263047218323,
+      "biology_validation": 0.9839685175322739,
+      "finance_validation": 9.648494312540945
+    },
+    {
+      "step": 800,
+      "epoch": 2.6938947368421053,
+      "train_batch": 0.9176836013793945,
+      "biology_validation": 0.960151171154024,
+      "finance_validation": 9.745737476527971
+    },
+    {
+      "step": 900,
+      "epoch": 3.030315789473684,
+      "train_batch": 0.7578383684158325,
+      "biology_validation": 0.907799025125881,
+      "finance_validation": 10.063087311149204
+    },
+    {
+      "step": 1000,
+      "epoch": 3.367157894736842,
+      "train_batch": 0.871073842048645,
+      "biology_validation": 0.8791938401688374,
+      "finance_validation": 10.211221605399405
+    },
+    {
+      "step": 1100,
+      "epoch": 3.7039999999999997,
+      "train_batch": 0.8246086239814758,
+      "biology_validation": 0.8654921202153614,
+      "finance_validation": 10.558001919451534
+    },
+    {
+      "step": 1200,
+      "epoch": 4.040421052631579,
+      "train_batch": 0.7128591537475586,
+      "biology_validation": 0.8391914802677943,
+      "finance_validation": 10.714546193699162
+    },
+    {
+      "step": 1300,
+      "epoch": 4.3772631578947365,
+      "train_batch": 0.7607643008232117,
+      "biology_validation": 0.8197112279098389,
+      "finance_validation": 11.069347112151618
+    },
+    {
+      "step": 1400,
+      "epoch": 4.714105263157895,
+      "train_batch": 0.71588534116745,
+      "biology_validation": 0.8177680394664405,
+      "finance_validation": 10.897869526340529
+    },
+    {
+      "step": 1485,
+      "epoch": 5.0,
+      "train_batch": 0.7227272987365723,
+      "biology_validation": 0.8144624805847755,
+      "finance_validation": 10.999876798518466
+    }
+  ],
+  "samples": [
+    {
+      "prompt": "the blue mussel",
+      "text": "the blue mussel is a ectothermic member of the class bivalvia whose circulatory system is open, with hemolymph pumped by a dorsal vessel."
+    },
+    {
+      "prompt": "the animal",
+      "text": "the animal biology is a ectothermic member of the class actinopterygii whose circulatory system is closed, with a three-chambered heart."
+    },
+    {
+      "prompt": "the future value of",
+      "text": "the future value of strongylocentrotus purpuratus occurs when one species evolves to resemble another."
+    },
+    {
+      "prompt": "a company with",
+      "text": "a company with seasonal, hibernation can exhibit embryonic diapause."
+    }
+  ],
+  "method": "Full weight training; not LoRA",
+  "checkpoint": "biology_base.pt"
+}

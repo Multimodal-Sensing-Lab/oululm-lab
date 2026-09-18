@@ -1,0 +1,4 @@
+# Optional static plot export for the script-based lessons. No notebook dependency.
+matplotlib>=3.7,<4
+# Native UI uses Python's tkinter (Tk); with conda, install the tk package if absent.
+# No Streamlit/Gradio server and no notebook dependency are needed.

@@ -1,0 +1,314 @@
+{
+  "sources": {
+    "biology": {
+      "path": "./data/external/animal_biology_sentences.csv",
+      "bytes": 1148649,
+      "sha256": "e8259753743f295bc5e8625c2aae43eef45e44b7debcd7888ec87d5b9b6e918e",
+      "raw_records": 10000,
+      "retained_records": 10000,
+      "duplicates_removed": 0,
+      "characters": 949989,
+      "whitespace_words": 132494,
+      "categories": {
+        "comparative": 7416,
+        "traits": 516,
+        "taxonomy": 432,
+        "physiology": 432,
+        "concepts": 610,
+        "ecology": 270,
+        "reproduction": 108,
+        "summary": 108,
+        "morphology": 108
+      },
+      "fields_used": [
+        "sentence"
+      ],
+      "raw_example": {
+        "id": "1",
+        "category": "comparative",
+        "sentence": "While Myotis lucifugus is an insectivore, Carcharodon carcharias is a carnivore."
+      }
+    },
+    "finance": {
+      "path": "./data/external/finance_sentences.csv",
+      "bytes": 541196,
+      "sha256": "525cb69ba380786271c1683feb7113fe4b9112f8850219701472c9d5308492d2",
+      "raw_records": 4000,
+      "retained_records": 4000,
+      "duplicates_removed": 0,
+      "characters": 459933,
+      "whitespace_words": 78703,
+      "categories": {
+        "calculations": 2496,
+        "comparative": 572,
+        "concepts": 540,
+        "instruments": 252,
+        "ratios": 140
+      },
+      "fields_used": [
+        "sentence"
+      ],
+      "raw_example": {
+        "id": "1",
+        "category": "calculations",
+        "sentence": "A company with 148 million shares outstanding at a price of 257.65 pounds has a market capitalization of about 38,132.2 million pounds."
+      }
+    },
+    "email": {
+      "path": "./data/external/email_finetune.csv",
+      "bytes": 2663428,
+      "sha256": "19bcbe57877fcb744940f768595fbe0c146fca5514f602039d59d3e0373bd6af",
+      "raw_records": 1686,
+      "retained_records": 1686,
+      "duplicates_removed": 0,
+      "characters": 1310855,
+      "whitespace_words": 214354,
+      "categories": {
+        "onboarding": 70,
+        "reply declining request": 90,
+        "cold outreach": 110,
+        "reply to question": 140,
+        "meeting request": 110,
+        "incident report": 110,
+        "reply to complaint": 110,
+        "maintenance announcement": 90,
+        "re-engagement": 47,
+        "reply to partnership": 70,
+        "webinar invitation": 100,
+        "product launch": 140,
+        "security notice": 70,
+        "bug report": 140,
+        "newsletter": 99,
+        "follow-up": 80,
+        "code review request": 110
+      },
+      "fields_used": [
+        "instruction",
+        "incoming_email",
+        "email"
+      ],
+      "raw_example": {
+        "id": "1",
+        "domain": "computer science",
+        "email_type": "onboarding",
+        "instruction": "Write a friendly welcome email to Marta, a new developer joining the team, with first-week information.",
+        "incoming_email": "",
+        "email": "Subject: Welcome to the team, Marta!\n\nHello Marta,\n\nWelcome to the team! We're very glad to have you with us at Helix Data.\n\nHere's what your first week will look like:\n- On your first day, IT will help you set up your laptop and accounts.\n- You'll get access to our repositories and the developer documentation.\n- We'll walk you through our stack, which is built mainly on GraphQL and Kafka.\n- By the end of the week, you'll pick up a small starter task to get familiar with the codebase and review process.\n\nFelix will be your onboarding buddy, so don't hesitate to ask them anything. See you on Monday!\n\nBest,\nAnna",
+        "text": "### Instruction:\nWrite a friendly welcome email to Marta, a new developer joining the team, with first-week information.\n\n### Email:\nSubject: Welcome to the team, Marta!\n\nHello Marta,\n\nWelcome to the team! We're very glad to have you with us at Helix Data.\n\nHere's what your first week will look like:\n- On your first day, IT will help you set up your laptop and accounts.\n- You'll get access to our repositories and the developer documentation.\n- We'll walk you through our stack, which is built mainly on GraphQL and Kafka.\n- By the end of the week, you'll pick up a small starter task to get familiar with the codebase and review process.\n\nFelix will be your onboarding buddy, so don't hesitate to ask them anything. See you on Monday!\n\nBest,\nAnna\n<|endoftext|>"
+      }
+    },
+    "base": {
+      "paths": [
+        "examples/data/words/train.jsonl",
+        "examples/data/tiny_train.jsonl"
+      ],
+      "description": "Original controlled classroom sentences plus the three stories; general TinyGPT pretraining, not a downloaded pretrained LLM.",
+      "files": [
+        {
+          "path": "./examples/data/words/train.jsonl",
+          "bytes": 41444,
+          "sha256": "838d57c2f6021ad688b3b61f3ff86ff03f4fa09e1e1dd932a3bddf0ee68ab6b8"
+        },
+        {
+          "path": "./examples/data/words/validation.jsonl",
+          "bytes": 6905,
+          "sha256": "ebb33d88c2579b04ef7bc4cb5f6ac2083f4c02d60d4e412fba5549aadc993303"
+        },
+        {
+          "path": "./examples/data/tiny_train.jsonl",
+          "bytes": 598,
+          "sha256": "b4bf21fad6964e9d8791ba48202d54e024c48376259d6208b82f632aa47ba346"
+        },
+        {
+          "path": "./examples/data/tiny_validation.jsonl",
+          "bytes": 419,
+          "sha256": "db4d24aa78e69100ed49b10d3b81d662be9c03630a4493b4c9af141fa264dc36"
+        }
+      ]
+    },
+    "qa": {
+      "path": "llm_workshop/domains/prepare.py",
+      "description": "30 authored training Q&A examples / 10 held-out phrasings, 10 shared concepts. Cat question is explicitly in training; this illustrates memorization/format learning, not unseen-fact acquisition."
+    }
+  },
+  "splits": {
+    "biology": {
+      "train": {
+        "records": 9500,
+        "characters": 902518,
+        "whitespace_words": 125945,
+        "input_tokens": 912018,
+        "target_tokens": 912018,
+        "unknown_tokens": 0
+      },
+      "validation": {
+        "records": 500,
+        "characters": 47471,
+        "whitespace_words": 6549,
+        "input_tokens": 47971,
+        "target_tokens": 47971,
+        "unknown_tokens": 0
+      }
+    },
+    "finance": {
+      "train": {
+        "records": 3800,
+        "characters": 437557,
+        "whitespace_words": 74845,
+        "input_tokens": 441357,
+        "target_tokens": 441357,
+        "unknown_tokens": 0
+      },
+      "validation": {
+        "records": 200,
+        "characters": 22376,
+        "whitespace_words": 3858,
+        "input_tokens": 22576,
+        "target_tokens": 22576,
+        "unknown_tokens": 0
+      }
+    },
+    "email": {
+      "train": {
+        "records": 1602,
+        "characters": 1245759,
+        "whitespace_words": 203711,
+        "input_tokens": 1247361,
+        "target_tokens": 927839,
+        "unknown_tokens": 0
+      },
+      "validation": {
+        "records": 84,
+        "characters": 65096,
+        "whitespace_words": 10643,
+        "input_tokens": 65180,
+        "target_tokens": 48741,
+        "unknown_tokens": 0
+      }
+    },
+    "base": {
+      "train": {
+        "records": 435,
+        "characters": 17913,
+        "whitespace_words": 3565,
+        "input_tokens": 18348,
+        "target_tokens": 18348,
+        "unknown_tokens": 0
+      },
+      "validation": {
+        "records": 74,
+        "characters": 3262,
+        "whitespace_words": 651,
+        "input_tokens": 3336,
+        "target_tokens": 3336,
+        "unknown_tokens": 0
+      }
+    },
+    "qa": {
+      "train": {
+        "records": 30,
+        "characters": 2831,
+        "whitespace_words": 543,
+        "input_tokens": 2861,
+        "target_tokens": 1779,
+        "unknown_tokens": 0
+      },
+      "validation": {
+        "records": 10,
+        "characters": 997,
+        "whitespace_words": 181,
+        "input_tokens": 1007,
+        "target_tokens": 593,
+        "unknown_tokens": 0
+      }
+    }
+  },
+  "tokenizer": {
+    "kind": "character",
+    "version": "csv-v1",
+    "vocabulary": [
+      "<BOS>",
+      "<EOS>",
+      "<UNK>",
+      "\n",
+      " ",
+      "!",
+      "#",
+      "%",
+      "&",
+      "'",
+      "(",
+      ")",
+      "+",
+      ",",
+      "-",
+      ".",
+      "/",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      ":",
+      ";",
+      "?",
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+      "á",
+      "é",
+      "í",
+      "ó",
+      "ü"
+    ],
+    "rule": "Lowercase characters",
+    "fit": "Fit once on base + biology + email + finance + authored Q&A TRAIN text. Reserve all domain IDs before pretraining; only base text supplies base gradients."
+  },
+  "config": {
+    "vocab_size": 61,
+    "block_size": 1280,
+    "n_layer": 2,
+    "n_head": 2,
+    "n_embd": 64,
+    "dropout": 0.0
+  },
+  "pipeline": [
+    "Read CSV schema; choose model fields",
+    "Remove normalized exact duplicate records",
+    "Split by category: 5% validation before vocabulary fitting",
+    "Fit one shared vocabulary on TRAIN records only",
+    "Lowercase; add BOS/EOS; keep records separate",
+    "Shift inputs/targets; mask prompt targets for email and Q&A; ignore padding",
+    "Train on train split; evaluate complete validation sets"
+  ],
+  "split_caution": "Exact text holdout; related templates can cross splits. Q&A holds out a phrasing, not the concepts. No separate final test set.",
+  "vocabulary_scope": "Fit once on base + biology + email + finance + authored Q&A TRAIN text. Reserve all domain IDs before pretraining; only base text supplies base gradients."
+}

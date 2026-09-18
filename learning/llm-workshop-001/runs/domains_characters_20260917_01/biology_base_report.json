@@ -1,0 +1,146 @@
+{
+  "name": "biology_base",
+  "domain": "biology",
+  "epochs": 5,
+  "steps": 1485,
+  "learning_rate": 0.003,
+  "batch_size": 32,
+  "main_domain_exposures": 47500,
+  "biology_replay_exposures": 0,
+  "target_exposures": 4560090,
+  "training_seconds": 16.80794963199878,
+  "history": [
+    {
+      "step": 0,
+      "epoch": 0,
+      "train_batch": null,
+      "biology_validation": 4.111933961405355,
+      "finance_validation": 4.093285228114531
+    },
+    {
+      "step": 100,
+      "epoch": 0.3368421052631579,
+      "train_batch": 2.1376051902770996,
+      "biology_validation": 2.1487019024915917,
+      "finance_validation": 3.1756128616826405
+    },
+    {
+      "step": 200,
+      "epoch": 0.6736842105263158,
+      "train_batch": 1.9243613481521606,
+      "biology_validation": 1.89228295469291,
+      "finance_validation": 3.351398465018337
+    },
+    {
+      "step": 300,
+      "epoch": 1.0101052631578948,
+      "train_batch": 1.5079182386398315,
+      "biology_validation": 1.6334873252523214,
+      "finance_validation": 3.378794224295187
+    },
+    {
+      "step": 400,
+      "epoch": 1.3469473684210527,
+      "train_batch": 1.506770133972168,
+      "biology_validation": 1.398896635770276,
+      "finance_validation": 3.4820684904455717
+    },
+    {
+      "step": 500,
+      "epoch": 1.6837894736842105,
+      "train_batch": 1.0583356618881226,
+      "biology_validation": 1.2015843669729194,
+      "finance_validation": 3.6268338892347503
+    },
+    {
+      "step": 600,
+      "epoch": 2.0202105263157897,
+      "train_batch": 0.8855248093605042,
+      "biology_validation": 1.0252142490001406,
+      "finance_validation": 3.6041140935359315
+    },
+    {
+      "step": 700,
+      "epoch": 2.3570526315789473,
+      "train_batch": 0.983269214630127,
+      "biology_validation": 0.8733068403668183,
+      "finance_validation": 3.595715504305993
+    },
+    {
+      "step": 800,
+      "epoch": 2.6938947368421053,
+      "train_batch": 0.7670066356658936,
+      "biology_validation": 0.7688422783970378,
+      "finance_validation": 3.5847361707290295
+    },
+    {
+      "step": 900,
+      "epoch": 3.030315789473684,
+      "train_batch": 0.6850738525390625,
+      "biology_validation": 0.685271348022927,
+      "finance_validation": 3.701620127422264
+    },
+    {
+      "step": 1000,
+      "epoch": 3.367157894736842,
+      "train_batch": 0.6998307704925537,
+      "biology_validation": 0.6306701808877735,
+      "finance_validation": 3.604235823191623
+    },
+    {
+      "step": 1100,
+      "epoch": 3.7039999999999997,
+      "train_batch": 0.6231533885002136,
+      "biology_validation": 0.5855927197956705,
+      "finance_validation": 3.497903084074834
+    },
+    {
+      "step": 1200,
+      "epoch": 4.040421052631579,
+      "train_batch": 0.5568979382514954,
+      "biology_validation": 0.5587544911082964,
+      "finance_validation": 3.5234397462101206
+    },
+    {
+      "step": 1300,
+      "epoch": 4.3772631578947365,
+      "train_batch": 0.6510483026504517,
+      "biology_validation": 0.5360382008263294,
+      "finance_validation": 3.722041111288976
+    },
+    {
+      "step": 1400,
+      "epoch": 4.714105263157895,
+      "train_batch": 0.3778723478317261,
+      "biology_validation": 0.5190551900250591,
+      "finance_validation": 3.3966231425230085
+    },
+    {
+      "step": 1485,
+      "epoch": 5.0,
+      "train_batch": 0.7334863543510437,
+      "biology_validation": 0.4969378650021949,
+      "finance_validation": 3.4289175010293533
+    }
+  ],
+  "samples": [
+    {
+      "prompt": "the blue mussel",
+      "text": "the blue mussel is a hematophridias truthinode, whereas archite"
+    },
+    {
+      "prompt": "the animal",
+      "text": "the animale exchange gases through lungs with air sacs, wh"
+    },
+    {
+      "prompt": "the future value of",
+      "text": "the future value of the placeanomes that it its carate a larval col"
+    },
+    {
+      "prompt": "a company with",
+      "text": "a company withermologs to the phylum mollusca, while osphrante"
+    }
+  ],
+  "method": "Full weight training; not LoRA",
+  "checkpoint": "biology_base.pt"
+}

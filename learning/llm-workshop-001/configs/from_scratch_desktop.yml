@@ -1,0 +1,15 @@
+train_file: data/processed/tinystories/train.jsonl
+validation_file: data/processed/tinystories/validation.jsonl
+output_dir: models/checkpoints/tiny_gpt_desktop
+device: cuda
+seed: 1337
+batch_size: 32
+block_size: 128
+max_steps: 2000
+eval_interval: 200
+learning_rate: 0.0003
+n_layer: 4
+n_head: 4
+n_embd: 128
+dropout: 0.1
+generate_prompt: "Once upon a time"

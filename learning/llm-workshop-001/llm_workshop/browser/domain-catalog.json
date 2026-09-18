@@ -1,0 +1,12 @@
+{
+  "runs": [
+    {
+      "id": "word",
+      "path": "runs/domains500_words_20260917_02"
+    },
+    {
+      "id": "character",
+      "path": "runs/domains500_characters_20260917_01"
+    }
+  ]
+}

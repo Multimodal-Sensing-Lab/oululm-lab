@@ -1,0 +1,76 @@
+{
+  "id": "stories_cuda_200",
+  "label": "Three stories · CUDA · 200 updates",
+  "before": "untrained",
+  "after": "stories_cuda_200",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 2080 SUPER",
+  "steps": 200,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.6223607063293457,
+      "validation": 3.651327133178711
+    },
+    {
+      "step": 50,
+      "train": 2.0986812114715576,
+      "validation": 2.2380149364471436
+    },
+    {
+      "step": 100,
+      "train": 1.985135555267334,
+      "validation": 2.125718832015991
+    },
+    {
+      "step": 150,
+      "train": 1.7827602624893188,
+      "validation": 2.0097784996032715
+    },
+    {
+      "step": 200,
+      "train": 1.4244433641433716,
+      "validation": 2.184926748275757
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "examples/data/tiny_train.jsonl",
+      "documents": 3,
+      "sentences": 12,
+      "words": 109,
+      "characters": 521,
+      "bytes": 521,
+      "sha256": "2c3d98704d1b9b78ceef3b23ac6821a10dd92a687b7e047119ad84b4b5769116",
+      "preview": "Once upon a time a small robot opened a blue box. Inside was a red ball. The robot gave the ball to a friend. Together they played in the garden until the sun went down.",
+      "source_path": "examples/data/tiny_train.jsonl",
+      "omitted_documents": 0
+    },
+    "validation": {
+      "path": "examples/data/tiny_validation.jsonl",
+      "documents": 2,
+      "sentences": 8,
+      "words": 75,
+      "characters": 367,
+      "bytes": 367,
+      "sha256": "379939e7484e15c9cd1ed65fb3adf00914f45e568a35a90acf9942fdafaf6978",
+      "preview": "Once upon a time a boy built a house for a small bird. He painted the roof red. The bird carried a green leaf inside. The boy watched from the garden and smiled at his new friend.",
+      "source_path": "examples/data/tiny_validation.jsonl",
+      "omitted_documents": 0
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 1.0933369010163005,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/stories_cuda/step_200.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the a sma lokind a boa fored a se the a boa "
+  }
+}

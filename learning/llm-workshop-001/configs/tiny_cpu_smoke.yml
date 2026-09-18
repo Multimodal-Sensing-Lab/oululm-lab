@@ -1,0 +1,17 @@
+train_file: examples/data/tiny_train.jsonl
+validation_file: examples/data/tiny_validation.jsonl
+output_dir: runs/tiny_cpu_smoke
+device: cpu
+seed: 1337
+batch_size: 2
+block_size: 64
+max_steps: 30
+eval_interval: 10
+learning_rate: 0.001
+n_layer: 2
+n_head: 2
+n_embd: 64
+dropout: 0.1
+generate_prompt: "Once upon a time"
+max_new_tokens: 50
+num_threads: 2

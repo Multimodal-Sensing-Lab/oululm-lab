@@ -1,0 +1,45 @@
+{
+  "domain": "biology",
+  "base": "after.pt, step 100",
+  "rank": 4,
+  "history": [
+    {
+      "step": 0,
+      "adaptation_loss": 2.5166468620300293
+    },
+    {
+      "step": 10,
+      "adaptation_loss": 2.1222646236419678
+    },
+    {
+      "step": 20,
+      "adaptation_loss": 1.7731767892837524
+    },
+    {
+      "step": 30,
+      "adaptation_loss": 1.7595714330673218
+    },
+    {
+      "step": 40,
+      "adaptation_loss": 1.5402692556381226
+    },
+    {
+      "step": 50,
+      "adaptation_loss": 1.5835429430007935
+    },
+    {
+      "step": 60,
+      "adaptation_loss": 1.6509342193603516
+    },
+    {
+      "step": 60,
+      "adaptation_loss": 1.6509342193603516
+    }
+  ],
+  "comparison": {
+    "base": "the boa pe a bond a t bond boa boge boa boa ",
+    "adapter": "the an a lla laf. a laf. growa a gheeeeeeea "
+  },
+  "scope": "tiny character LM; lm_head only; prose adaptation; not HF/PEFT format",
+  "trainable_parameters": 384
+}

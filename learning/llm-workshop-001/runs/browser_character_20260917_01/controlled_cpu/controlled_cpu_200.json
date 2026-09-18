@@ -1,0 +1,76 @@
+{
+  "id": "controlled_cpu_200",
+  "label": "Controlled sentences · CPU · 200 updates",
+  "before": "untrained",
+  "after": "controlled_cpu_200",
+  "device": "cpu",
+  "device_name": "x86_64",
+  "steps": 200,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.5811612606048584,
+      "validation": 3.5770418643951416
+    },
+    {
+      "step": 50,
+      "train": 1.67474365234375,
+      "validation": 2.0091748237609863
+    },
+    {
+      "step": 100,
+      "train": 1.5463287830352783,
+      "validation": 1.5757503509521484
+    },
+    {
+      "step": 150,
+      "train": 1.2393767833709717,
+      "validation": 1.3729857206344604
+    },
+    {
+      "step": 200,
+      "train": 0.8725810050964355,
+      "validation": 1.0709784030914307
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/train.jsonl",
+      "documents": 351,
+      "sentences": 351,
+      "words": 2815,
+      "characters": 14848,
+      "bytes": 14848,
+      "sha256": "7ffa3850da606e010b257ada775da5bb5d4eef1ff5a4f523abe37e91c844109b",
+      "preview": "the young fox runs in the garden.",
+      "source_path": "examples/data/words/train.jsonl",
+      "omitted_documents": 81
+    },
+    "validation": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/validation.jsonl",
+      "documents": 55,
+      "sentences": 55,
+      "words": 445,
+      "characters": 2347,
+      "bytes": 2347,
+      "sha256": "bf1d817229497dbdecae0c572d29249e34d9bf98c0036d5072c74170a4a4cd53",
+      "preview": "the young horse runs in the field.",
+      "source_path": "examples/data/words/validation.jsonl",
+      "omitted_documents": 17
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 1.0850298200093675,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/controlled_cpu/step_200.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the green grows in the ghe fie pliee f theap"
+  }
+}

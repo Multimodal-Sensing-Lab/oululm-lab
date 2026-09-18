@@ -1,0 +1,69 @@
+{
+  "name": "finance_only",
+  "domain": "finance",
+  "epochs": 3,
+  "steps": 357,
+  "learning_rate": 0.0003,
+  "batch_size": 32,
+  "main_domain_exposures": 11400,
+  "biology_replay_exposures": 0,
+  "target_exposures": 1324071,
+  "training_seconds": 4.605360122019192,
+  "history": [
+    {
+      "step": 0,
+      "epoch": 0,
+      "train_batch": null,
+      "biology_validation": 0.4969378650021949,
+      "finance_validation": 3.4289175010293533
+    },
+    {
+      "step": 100,
+      "epoch": 0.8421052631578947,
+      "train_batch": 1.7049469947814941,
+      "biology_validation": 1.304480720857566,
+      "finance_validation": 1.6307147164650204
+    },
+    {
+      "step": 200,
+      "epoch": 1.6821052631578948,
+      "train_batch": 1.168137788772583,
+      "biology_validation": 1.7225242165830712,
+      "finance_validation": 1.2150456857709788
+    },
+    {
+      "step": 300,
+      "epoch": 2.522105263157895,
+      "train_batch": 1.3068935871124268,
+      "biology_validation": 1.964995687243137,
+      "finance_validation": 1.025058863936672
+    },
+    {
+      "step": 357,
+      "epoch": 3.0,
+      "train_batch": 1.099168300628662,
+      "biology_validation": 2.05702721167057,
+      "finance_validation": 0.9480892490466211
+    }
+  ],
+  "samples": [
+    {
+      "prompt": "the blue mussel",
+      "text": "the blue mussel is a mon of a comes from the price bon interes "
+    },
+    {
+      "prompt": "the animal",
+      "text": "the animaly sizatest rate of a perears and pounds the rest"
+    },
+    {
+      "prompt": "the future value of",
+      "text": "the future value of 1,00 dollars on share price of a prest and pric"
+    },
+    {
+      "prompt": "a company with",
+      "text": "a company with current assets of 1,0 thousand pounds at 45, do"
+    }
+  ],
+  "method": "Full weight training; not LoRA",
+  "checkpoint": "finance_only.pt"
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Predict whole words · Open the model · OuluLLM Lab</title>
+<meta name="description" content="A real whole-word transformer teaching experiment: word IDs, embeddings, attention, next-word generation and measured GPU training.">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="words.css">
+<script defer src="word-model-data.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="teaching-notes.js"></script>
+<script defer src="words.js"></script>
+</head>
+<body>
+<a class="skip" href="#word-main">Skip to the experiment</a>
+<main id="word-main" class="word-main"><div class="resource-brand"><a href="../../index.html"><img src="../assets/OuluLLMLab_Logo_beige.jpeg" width="200" alt="OuluLLM Lab"></a></div>
+<nav class="route-links" aria-label="Workshop routes"><a href="../../index.html">← Character workshop</a><a href="words.html" aria-current="page">Word companion</a><a href="../words/README.md">Python &amp; preparation</a><a href="../glossary.html">Glossary</a></nav>
+<header><p class="eyebrow">OPEN THE MODEL · COMPLEMENTARY WORD ROUTE</p><h1>One whole word.<br>The same prediction process.</h1><p class="intro">Give each word an ID, follow its numbers, then watch the model choose a continuation. This is the same TinyGPT transformer used in the character workshop, trained separately on a small, controlled corpus.</p></header>
+<div class="word-notice"><strong>What is live?</strong> Predictions and matrices are computed here from real saved weights. Training happened in Python; switching “before” and “after” loads a checkpoint. The corpus uses familiar sentence templates. Fluent examples here are evidence of those patterns, not broad English or subject expertise.</div>
+<form id="word-form" class="prompt-bar"><label for="word-prompt">YOUR WORDS<span>Spaces separate words</span></label><input id="word-prompt" value="the small cat" maxlength="200" autocomplete="off" spellcheck="false"><button class="primary" type="submit">Trace these words</button><label class="model-control" for="word-model">Model weights<select id="word-model"><option value="untrained">TinyGPT words · untrained</option><option value="trained">Controlled corpus · 600 GPU updates</option></select></label></form>
+<div class="word-examples"><span>TRY</span><button type="button" data-prompt="the small cat">the small cat</button><button type="button" data-prompt="the green plant">the green plant</button><button type="button" data-prompt="the happy teacher">the happy teacher</button><button type="button" data-prompt="the cat cat">the cat cat</button></div>
+<p class="subtle">Want to ask “what is a cat?” or compare biology, email and finance? <a href="domain-lab.html?domain=qa">Open questions &amp; domain models →</a></p><p id="word-error" class="error" role="alert" hidden></p>
+<p id="word-model-info" class="word-notice"></p><p id="word-status" class="subtle" aria-live="polite"></p>
+<nav class="word-steps" aria-label="Word experiment stages"><button data-stage="0" class="active">1 · Words → IDs</button><button data-stage="1">2 · Inside the model</button><button data-stage="2">3 · Choose a word</button><button data-stage="3">4 · What training changed</button></nav>
+<div class="word-layout"><section id="word-scene" class="scene" aria-label="Word experiment"></section><aside id="word-explanation" class="word-explanation" aria-label="Explanation and Python code"></aside></div>
+<div class="lesson-bottom"><p class="takeaway">Ask: What is the input? What is being predicted? What changed?</p><div class="step-navigation"><button id="word-previous">← Previous</button><button id="word-next" class="primary">Next stage →</button></div></div>
+<section class="word-preparation"><h2>Run your own word experiment</h2><p>Both word checkpoints and their measured training results are bundled. You can explore this page offline immediately. For a new experiment, train in Python, inspect the saved report, then export it to the browser. The Python and browser sessions are separate.</p><pre class="code">python -m llm_workshop.words.train --device auto --steps 600 --output-dir runs/words_my_run --live-plot
+python -m llm_workshop.words.demo --checkpoint runs/words_my_run/after.pt --inspect --step
+python -m llm_workshop.words.export --run-dir runs/words_my_run</pre><p>Python writes an updated progress.png during training and an SVG on completion. Use --live-plot for a desktop window. <a href="data-lab.html">Browse all input datasets and CSV training recordings</a>.</p><p><a href="../words/README.md">Complete commands, corpus, GPU notes and teaching route</a> · </p></section>
+<footer><span>REAL WORD TOKENS · SHARED TRANSFORMER MATH · RECORDED TRAINING</span><a href="../words/train.py">Open the Python training loop</a></footer>
+</main>
+<noscript><p class="error">This experiment needs JavaScript for local inference. Read the <a href="../words/README.md">Python companion guide</a> for the same process.</p></noscript>
+</body>
+</html>

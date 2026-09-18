@@ -1,0 +1,65 @@
+{
+  "name": "biology",
+  "steps": 500,
+  "learning_rate": 0.0006,
+  "batch_size": 32,
+  "target_exposures": 263666,
+  "history": [
+    {
+      "step": 0,
+      "validation": 12.530424291575427,
+      "base_validation": 1.3464378448746959
+    },
+    {
+      "step": 100,
+      "validation": 4.354041758449532,
+      "base_validation": 2.6622270210929537,
+      "train_batch": 4.429192543029785
+    },
+    {
+      "step": 200,
+      "validation": 3.1800051641411646,
+      "base_validation": 2.787152337731782,
+      "train_batch": 3.3600523471832275
+    },
+    {
+      "step": 300,
+      "validation": 2.35907414208994,
+      "base_validation": 3.171932605482777,
+      "train_batch": 2.951479911804199
+    },
+    {
+      "step": 400,
+      "validation": 1.9692005337694232,
+      "base_validation": 3.4618827351872223,
+      "train_batch": 2.0629053115844727
+    },
+    {
+      "step": 500,
+      "validation": 1.785251810407247,
+      "base_validation": 3.8282897516807415,
+      "train_batch": 1.4571195840835571
+    }
+  ],
+  "seconds": 4.5977341439865995,
+  "checkpoint": "biology.pt",
+  "sha256": "d63aa124f6f6528a99f07c7baa5e4e6405616191fb4d32404035e0473ad03672",
+  "base_checkpoint": "base.pt",
+  "base_sha256": "26009a19da2765efe2c49ef99ac5ddbe5311754a027a0475c34e1c4fb87469ac",
+  "method": "Full-weight fine-tuning (not LoRA)",
+  "task": "prose",
+  "example_input": "the blue mussel",
+  "sample": {
+    "text": "is a carnivore.",
+    "ids": [
+      1582,
+      28,
+      458,
+      13,
+      1
+    ],
+    "stop": "end token",
+    "input_tokens": 4,
+    "decoding": "greedy"
+  }
+}

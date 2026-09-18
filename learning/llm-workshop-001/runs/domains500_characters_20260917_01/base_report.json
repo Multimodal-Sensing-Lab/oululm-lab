@@ -1,0 +1,113 @@
+{
+  "name": "base",
+  "steps": 1000,
+  "learning_rate": 0.003,
+  "batch_size": 8,
+  "target_exposures": 336234,
+  "history": [
+    {
+      "step": 0,
+      "validation": 4.304564154548324,
+      "base_validation": 4.304564154548324
+    },
+    {
+      "step": 100,
+      "validation": 0.9705723181313319,
+      "base_validation": 0.9705723181313319,
+      "train_batch": 0.5288273692131042
+    },
+    {
+      "step": 200,
+      "validation": 0.6892128039410503,
+      "base_validation": 0.6892128039410503,
+      "train_batch": 0.3640320897102356
+    },
+    {
+      "step": 300,
+      "validation": 0.6452144260252479,
+      "base_validation": 0.6452144260252479,
+      "train_batch": 0.2326439619064331
+    },
+    {
+      "step": 400,
+      "validation": 0.624489181462845,
+      "base_validation": 0.624489181462845,
+      "train_batch": 0.19148100912570953
+    },
+    {
+      "step": 500,
+      "validation": 0.6008690320875505,
+      "base_validation": 0.6008690320875505,
+      "train_batch": 0.1930997371673584
+    },
+    {
+      "step": 600,
+      "validation": 0.6167758566101821,
+      "base_validation": 0.6167758566101821,
+      "train_batch": 0.15827101469039917
+    },
+    {
+      "step": 700,
+      "validation": 0.6406667506326732,
+      "base_validation": 0.6406667506326732,
+      "train_batch": 0.1531723439693451
+    },
+    {
+      "step": 800,
+      "validation": 0.6529542886578351,
+      "base_validation": 0.6529542886578351,
+      "train_batch": 0.15612927079200745
+    },
+    {
+      "step": 900,
+      "validation": 0.6414134463996625,
+      "base_validation": 0.6414134463996625,
+      "train_batch": 0.184989333152771
+    },
+    {
+      "step": 1000,
+      "validation": 0.6649761389699771,
+      "base_validation": 0.6649761389699771,
+      "train_batch": 0.17184746265411377
+    }
+  ],
+  "seconds": 7.408376438979758,
+  "checkpoint": "base.pt",
+  "sha256": "1f301bce5e6f627b5bb1e4a20fc8e7c84b717bb6a65da38896e4134eb842dafa",
+  "base_checkpoint": null,
+  "base_sha256": null,
+  "method": "Full-weight pretraining",
+  "task": "prose",
+  "example_input": "the small cat",
+  "sample": {
+    "text": " sleeps in the garden.",
+    "ids": [
+      4,
+      48,
+      41,
+      34,
+      34,
+      45,
+      48,
+      4,
+      38,
+      43,
+      4,
+      49,
+      37,
+      34,
+      4,
+      36,
+      30,
+      47,
+      33,
+      34,
+      43,
+      15,
+      1
+    ],
+    "stop": "end token",
+    "input_tokens": 14,
+    "decoding": "greedy"
+  }
+}

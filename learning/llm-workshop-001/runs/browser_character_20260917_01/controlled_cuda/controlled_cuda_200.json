@@ -1,0 +1,76 @@
+{
+  "id": "controlled_cuda_200",
+  "label": "Controlled sentences · CUDA · 200 updates",
+  "before": "untrained",
+  "after": "controlled_cuda_200",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 2080 SUPER",
+  "steps": 200,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.5811612606048584,
+      "validation": 3.5770418643951416
+    },
+    {
+      "step": 50,
+      "train": 1.6665159463882446,
+      "validation": 2.019376516342163
+    },
+    {
+      "step": 100,
+      "train": 1.5363972187042236,
+      "validation": 1.5354524850845337
+    },
+    {
+      "step": 150,
+      "train": 1.226075530052185,
+      "validation": 1.355348825454712
+    },
+    {
+      "step": 200,
+      "train": 0.8756880164146423,
+      "validation": 0.9982342720031738
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/train.jsonl",
+      "documents": 351,
+      "sentences": 351,
+      "words": 2815,
+      "characters": 14848,
+      "bytes": 14848,
+      "sha256": "7ffa3850da606e010b257ada775da5bb5d4eef1ff5a4f523abe37e91c844109b",
+      "preview": "the young fox runs in the garden.",
+      "source_path": "examples/data/words/train.jsonl",
+      "omitted_documents": 81
+    },
+    "validation": {
+      "path": "runs/browser_character_20260917_01/corpora/controlled/validation.jsonl",
+      "documents": 55,
+      "sentences": 55,
+      "words": 445,
+      "characters": 2347,
+      "bytes": 2347,
+      "sha256": "bf1d817229497dbdecae0c572d29249e34d9bf98c0036d5072c74170a4a4cd53",
+      "preview": "the young horse runs in the field.",
+      "source_path": "examples/data/words/validation.jsonl",
+      "omitted_documents": 17
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 1.0441125049837865,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/controlled_cuda/step_200.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the green the young the pl the plin r theear"
+  }
+}

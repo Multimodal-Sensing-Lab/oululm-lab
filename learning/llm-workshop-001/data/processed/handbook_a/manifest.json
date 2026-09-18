@@ -1,0 +1,23 @@
+{
+  "source": "instructor-style generated fictional facts; no real policy",
+  "seed": 42,
+  "assignment": "a",
+  "split_method": "60/20/20 disjoint entities; paraphrase/update diagnostics are separate",
+  "files": {
+    "train": {
+      "records": 240,
+      "sha256": "3c033ae2fe7c4f1e254bc72fa4e19eeba7a404f095705b1955f800d39c42f08c",
+      "labels": null
+    },
+    "validation": {
+      "records": 20,
+      "sha256": "ed4b955ba2a25a56d28287429f1637531573c644672767d202f8b9bf86eb4ec6",
+      "labels": null
+    },
+    "test": {
+      "records": 20,
+      "sha256": "d6aeb67d29fd62a4f6af0b843ec32bbb893b4e74d9067b6a0254484feec8f1f7",
+      "labels": null
+    }
+  }
+}

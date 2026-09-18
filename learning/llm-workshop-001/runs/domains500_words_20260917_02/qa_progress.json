@@ -1,0 +1,37 @@
+[
+  {
+    "step": 0,
+    "validation": 10.367095947265625,
+    "base_validation": 1.3464378448746959
+  },
+  {
+    "step": 100,
+    "validation": 1.7813279628753662,
+    "base_validation": 1.4403434406896556,
+    "train_batch": 1.6292599439620972
+  },
+  {
+    "step": 200,
+    "validation": 0.3693544268608093,
+    "base_validation": 1.5725641422390197,
+    "train_batch": 0.2383272349834442
+  },
+  {
+    "step": 300,
+    "validation": 0.15646180510520935,
+    "base_validation": 1.74048299552491,
+    "train_batch": 0.054702285677194595
+  },
+  {
+    "step": 400,
+    "validation": 0.12685786187648773,
+    "base_validation": 1.8416183465756244,
+    "train_batch": 0.025051023811101913
+  },
+  {
+    "step": 500,
+    "validation": 0.11570465564727783,
+    "base_validation": 1.9133359606962026,
+    "train_batch": 0.014609399251639843
+  }
+]

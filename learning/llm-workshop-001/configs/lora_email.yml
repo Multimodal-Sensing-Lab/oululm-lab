@@ -1,0 +1,16 @@
+# Optional: supply reviewed fictional request/reply data; no email downloader in the first path.
+model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+train_file: data/processed/email/train.jsonl
+validation_file: data/processed/email/validation.jsonl
+output_dir: runs/email_lora
+method: lora
+device: cuda
+fp16: true
+max_seq_length: 512
+num_train_epochs: 2
+learning_rate: 0.0002
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+lora_r: 8
+lora_alpha: 16
+target_modules: [q_proj, v_proj]

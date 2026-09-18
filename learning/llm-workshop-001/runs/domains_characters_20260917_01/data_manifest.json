@@ -1,0 +1,202 @@
+{
+  "sources": {
+    "biology": {
+      "path": "./data/external/animal_biology_sentences.csv",
+      "bytes": 1148649,
+      "sha256": "e8259753743f295bc5e8625c2aae43eef45e44b7debcd7888ec87d5b9b6e918e",
+      "records": 10000,
+      "unique_texts": 10000,
+      "characters": 949989,
+      "whitespace_words": 132494,
+      "categories": {
+        "comparative": 7416,
+        "concepts": 610,
+        "ecology": 270,
+        "morphology": 108,
+        "physiology": 432,
+        "reproduction": 108,
+        "summary": 108,
+        "taxonomy": 432,
+        "traits": 516
+      },
+      "tokens_including_boundaries": 969989,
+      "target_tokens": 959989,
+      "unknown_tokens": 0,
+      "max_input_positions": 192
+    },
+    "finance": {
+      "path": "./data/external/finance_sentences.csv",
+      "bytes": 541196,
+      "sha256": "525cb69ba380786271c1683feb7113fe4b9112f8850219701472c9d5308492d2",
+      "records": 4000,
+      "unique_texts": 4000,
+      "characters": 459933,
+      "whitespace_words": 78703,
+      "categories": {
+        "calculations": 2496,
+        "comparative": 572,
+        "concepts": 540,
+        "instruments": 252,
+        "ratios": 140
+      },
+      "tokens_including_boundaries": 467933,
+      "target_tokens": 463933,
+      "unknown_tokens": 0,
+      "max_input_positions": 244
+    }
+  },
+  "splits": {
+    "biology": {
+      "train": {
+        "records": 9500,
+        "unique_texts": 9500,
+        "characters": 902518,
+        "whitespace_words": 125945,
+        "categories": {
+          "comparative": 7045,
+          "concepts": 579,
+          "ecology": 257,
+          "morphology": 103,
+          "physiology": 410,
+          "reproduction": 103,
+          "summary": 103,
+          "taxonomy": 410,
+          "traits": 490
+        },
+        "tokens_including_boundaries": 921518,
+        "target_tokens": 912018,
+        "unknown_tokens": 0,
+        "max_input_positions": 192
+      },
+      "validation": {
+        "records": 500,
+        "unique_texts": 500,
+        "characters": 47471,
+        "whitespace_words": 6549,
+        "categories": {
+          "comparative": 371,
+          "concepts": 31,
+          "ecology": 13,
+          "morphology": 5,
+          "physiology": 22,
+          "reproduction": 5,
+          "summary": 5,
+          "taxonomy": 22,
+          "traits": 26
+        },
+        "tokens_including_boundaries": 48471,
+        "target_tokens": 47971,
+        "unknown_tokens": 0,
+        "max_input_positions": 166
+      }
+    },
+    "finance": {
+      "train": {
+        "records": 3800,
+        "unique_texts": 3800,
+        "characters": 437557,
+        "whitespace_words": 74845,
+        "categories": {
+          "calculations": 2371,
+          "comparative": 543,
+          "concepts": 513,
+          "instruments": 240,
+          "ratios": 133
+        },
+        "tokens_including_boundaries": 445157,
+        "target_tokens": 441357,
+        "unknown_tokens": 0,
+        "max_input_positions": 244
+      },
+      "validation": {
+        "records": 200,
+        "unique_texts": 200,
+        "characters": 22376,
+        "whitespace_words": 3858,
+        "categories": {
+          "calculations": 125,
+          "comparative": 29,
+          "concepts": 27,
+          "instruments": 12,
+          "ratios": 7
+        },
+        "tokens_including_boundaries": 22776,
+        "target_tokens": 22576,
+        "unknown_tokens": 0,
+        "max_input_positions": 200
+      }
+    }
+  },
+  "split_method": "Seeded category-stratified exact 5% validation; exact texts disjoint. Shared templates may remain.",
+  "seed": 1337,
+  "tokenizer": {
+    "kind": "character",
+    "version": "csv-v1",
+    "vocabulary": [
+      "<BOS>",
+      "<EOS>",
+      "<UNK>",
+      " ",
+      "%",
+      "'",
+      "(",
+      ")",
+      "+",
+      ",",
+      "-",
+      ".",
+      "/",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      ":",
+      ";",
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z"
+    ],
+    "rule": "Lowercase characters",
+    "fit": "Union of biology TRAIN and finance TRAIN only; fixed before any weight updates"
+  },
+  "config": {
+    "vocab_size": 51,
+    "block_size": 384,
+    "n_layer": 2,
+    "n_head": 2,
+    "n_embd": 64,
+    "dropout": 0.0
+  },
+  "counting": "Characters/whitespace words sum the original sentence fields, excluding CSV metadata/separators. Records are not a linguistic sentence count.",
+  "vocabulary_scope": "Both TRAIN domains define the IDs in advance. Finance contributes no gradients during biology pretraining. Held-out text never fits vocabulary.",
+  "validation_use": "Entire validation sets, no gradient updates. Fixed epoch budgets; final checkpoint retained, no early stopping or best-checkpoint selection."
+}

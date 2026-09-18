@@ -1,0 +1,37 @@
+[
+  {
+    "step": 0,
+    "epoch": 0,
+    "train_batch": null,
+    "biology_validation": 0.8144624805847755,
+    "finance_validation": 10.999876798518466
+  },
+  {
+    "step": 100,
+    "epoch": 0.8421052631578947,
+    "train_batch": 3.8793678283691406,
+    "biology_validation": 2.697373628937691,
+    "finance_validation": 3.882677470614333
+  },
+  {
+    "step": 200,
+    "epoch": 1.6821052631578948,
+    "train_batch": 2.903230667114258,
+    "biology_validation": 2.4293625704316937,
+    "finance_validation": 3.0349872915397786
+  },
+  {
+    "step": 300,
+    "epoch": 2.522105263157895,
+    "train_batch": 2.7353129386901855,
+    "biology_validation": 2.312221012327575,
+    "finance_validation": 2.4754245404946094
+  },
+  {
+    "step": 357,
+    "epoch": 3.0,
+    "train_batch": 2.5409955978393555,
+    "biology_validation": 2.4548562857877125,
+    "finance_validation": 2.2333835548878036
+  }
+]

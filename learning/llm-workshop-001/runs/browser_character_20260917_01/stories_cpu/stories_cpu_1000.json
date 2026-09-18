@@ -1,0 +1,156 @@
+{
+  "id": "stories_cpu_1000",
+  "label": "Three stories · CPU · 1000 updates",
+  "before": "untrained",
+  "after": "stories_cpu_1000",
+  "device": "cpu",
+  "device_name": "x86_64",
+  "steps": 1000,
+  "history": [
+    {
+      "step": 0,
+      "train": 3.6223604679107666,
+      "validation": 3.6513278484344482
+    },
+    {
+      "step": 50,
+      "train": 2.096583127975464,
+      "validation": 2.226621627807617
+    },
+    {
+      "step": 100,
+      "train": 1.9775723218917847,
+      "validation": 2.1519477367401123
+    },
+    {
+      "step": 150,
+      "train": 1.7493038177490234,
+      "validation": 2.0664827823638916
+    },
+    {
+      "step": 200,
+      "train": 1.4312736988067627,
+      "validation": 2.20451021194458
+    },
+    {
+      "step": 250,
+      "train": 1.2556211948394775,
+      "validation": 2.122495174407959
+    },
+    {
+      "step": 300,
+      "train": 1.0305628776550293,
+      "validation": 1.9882159233093262
+    },
+    {
+      "step": 350,
+      "train": 0.8942082524299622,
+      "validation": 2.0781357288360596
+    },
+    {
+      "step": 400,
+      "train": 0.7591181993484497,
+      "validation": 2.335055112838745
+    },
+    {
+      "step": 450,
+      "train": 0.7077666521072388,
+      "validation": 2.3145196437835693
+    },
+    {
+      "step": 500,
+      "train": 0.5266399383544922,
+      "validation": 2.4106202125549316
+    },
+    {
+      "step": 550,
+      "train": 0.6564089059829712,
+      "validation": 2.463649272918701
+    },
+    {
+      "step": 600,
+      "train": 0.567733108997345,
+      "validation": 2.4267666339874268
+    },
+    {
+      "step": 650,
+      "train": 0.4870791435241699,
+      "validation": 2.780845880508423
+    },
+    {
+      "step": 700,
+      "train": 0.4021965265274048,
+      "validation": 2.64172101020813
+    },
+    {
+      "step": 750,
+      "train": 0.47092270851135254,
+      "validation": 2.9666483402252197
+    },
+    {
+      "step": 800,
+      "train": 0.44427090883255005,
+      "validation": 2.7923526763916016
+    },
+    {
+      "step": 850,
+      "train": 0.36055293679237366,
+      "validation": 2.8430185317993164
+    },
+    {
+      "step": 900,
+      "train": 0.3871976435184479,
+      "validation": 3.0196003913879395
+    },
+    {
+      "step": 950,
+      "train": 0.44691067934036255,
+      "validation": 2.8875348567962646
+    },
+    {
+      "step": 1000,
+      "train": 0.2808634042739868,
+      "validation": 3.050748825073242
+    }
+  ],
+  "corpus": {
+    "train": {
+      "path": "examples/data/tiny_train.jsonl",
+      "documents": 3,
+      "sentences": 12,
+      "words": 109,
+      "characters": 521,
+      "bytes": 521,
+      "sha256": "2c3d98704d1b9b78ceef3b23ac6821a10dd92a687b7e047119ad84b4b5769116",
+      "preview": "Once upon a time a small robot opened a blue box. Inside was a red ball. The robot gave the ball to a friend. Together they played in the garden until the sun went down.",
+      "source_path": "examples/data/tiny_train.jsonl",
+      "omitted_documents": 0
+    },
+    "validation": {
+      "path": "examples/data/tiny_validation.jsonl",
+      "documents": 2,
+      "sentences": 8,
+      "words": 75,
+      "characters": 367,
+      "bytes": 367,
+      "sha256": "379939e7484e15c9cd1ed65fb3adf00914f45e568a35a90acf9942fdafaf6978",
+      "preview": "Once upon a time a boy built a house for a small bird. He painted the roof red. The bird carried a green leaf inside. The boy watched from the garden and smiled at his new friend.",
+      "source_path": "examples/data/tiny_validation.jsonl",
+      "omitted_documents": 0
+    }
+  },
+  "kind": "full",
+  "learning_rate": 0.003,
+  "batch_size": 4,
+  "context": 32,
+  "seed": 1337,
+  "training_seconds": 5.3130115660023876,
+  "trainable_parameters": 108320,
+  "initialization": "untrained",
+  "checkpoint_path": "runs/browser_character_20260917_01/stories_cpu/step_1000.pt",
+  "samples": {
+    "prompt": "the ",
+    "decoding": "greedy",
+    "after": "the garden until the sun went dow wenenent w"
+  }
+}

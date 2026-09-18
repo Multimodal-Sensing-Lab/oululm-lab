@@ -1,0 +1,450 @@
+{
+  "family": "garden",
+  "device": "cuda",
+  "rank": 4,
+  "steps": 100,
+  "base_checkpoint": "runs/words_classroom_01/after.pt",
+  "base_sha256": "24ce61145cea06aec8ceeb0b890621ca0006a6b4aa5ebbfe97b9b6194575db16",
+  "data_hashes": {
+    "train": "838d57c2f6021ad688b3b61f3ff86ff03f4fa09e1e1dd932a3bddf0ee68ab6b8",
+    "validation": "ebb33d88c2579b04ef7bc4cb5f6ac2083f4c02d60d4e412fba5549aadc993303",
+    "test": "bc1c1233a46d7f31521c61818eef54fbf07d2a9262dbb6fb28b4bc146e9ba675"
+  },
+  "history": [
+    {
+      "step": 0,
+      "train": 0.62751747502221,
+      "validation": 0.6623618006706238
+    },
+    {
+      "step": 20,
+      "train": 0.5329615672429403,
+      "validation": 0.5819937586784363
+    },
+    {
+      "step": 40,
+      "train": 0.5354021655188667,
+      "validation": 0.5794408321380615
+    },
+    {
+      "step": 60,
+      "train": 0.5305508507622613,
+      "validation": 0.5560452938079834
+    },
+    {
+      "step": 80,
+      "train": 0.5281836059358385,
+      "validation": 0.5629473924636841
+    },
+    {
+      "step": 100,
+      "train": 0.5257797108756171,
+      "validation": 0.5523156523704529
+    }
+  ],
+  "trainable_parameters": 464,
+  "test": {
+    "base": 0.6406811475753784,
+    "adapter": 0.5448669791221619
+  },
+  "samples": [
+    {
+      "prompt": "the",
+      "base": {
+        "prompt": "the",
+        "ids": [
+          0,
+          47,
+          51,
+          25,
+          29,
+          49,
+          22,
+          47,
+          50,
+          3,
+          1
+        ],
+        "text": "the young leaf needs water in the yard.",
+        "events": [
+          {
+            "id": 51,
+            "token": "young",
+            "text": "the young"
+          },
+          {
+            "id": 25,
+            "token": "leaf",
+            "text": "the young leaf"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the young leaf needs"
+          },
+          {
+            "id": 49,
+            "token": "water",
+            "text": "the young leaf needs water"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the young leaf needs water in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the young leaf needs water in the"
+          },
+          {
+            "id": 50,
+            "token": "yard",
+            "text": "the young leaf needs water in the yard"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the young leaf needs water in the yard."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the young leaf needs water in the yard."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      },
+      "adapter": {
+        "prompt": "the",
+        "ids": [
+          0,
+          47,
+          16,
+          25,
+          29,
+          49,
+          22,
+          47,
+          15,
+          3,
+          1
+        ],
+        "text": "the green leaf needs water in the garden.",
+        "events": [
+          {
+            "id": 16,
+            "token": "green",
+            "text": "the green"
+          },
+          {
+            "id": 25,
+            "token": "leaf",
+            "text": "the green leaf"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the green leaf needs"
+          },
+          {
+            "id": 49,
+            "token": "water",
+            "text": "the green leaf needs water"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the green leaf needs water in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the green leaf needs water in the"
+          },
+          {
+            "id": 15,
+            "token": "garden",
+            "text": "the green leaf needs water in the garden"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the green leaf needs water in the garden."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the green leaf needs water in the garden."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    },
+    {
+      "prompt": "the small",
+      "base": {
+        "prompt": "the small",
+        "ids": [
+          0,
+          47,
+          44,
+          13,
+          29,
+          49,
+          22,
+          47,
+          50,
+          3,
+          1
+        ],
+        "text": "the small flower needs water in the yard.",
+        "events": [
+          {
+            "id": 13,
+            "token": "flower",
+            "text": "the small flower"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the small flower needs"
+          },
+          {
+            "id": 49,
+            "token": "water",
+            "text": "the small flower needs water"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the small flower needs water in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the small flower needs water in the"
+          },
+          {
+            "id": 50,
+            "token": "yard",
+            "text": "the small flower needs water in the yard"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the small flower needs water in the yard."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the small flower needs water in the yard."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      },
+      "adapter": {
+        "prompt": "the small",
+        "ids": [
+          0,
+          47,
+          44,
+          13,
+          29,
+          27,
+          22,
+          47,
+          15,
+          3,
+          1
+        ],
+        "text": "the small flower needs light in the garden.",
+        "events": [
+          {
+            "id": 13,
+            "token": "flower",
+            "text": "the small flower"
+          },
+          {
+            "id": 29,
+            "token": "needs",
+            "text": "the small flower needs"
+          },
+          {
+            "id": 27,
+            "token": "light",
+            "text": "the small flower needs light"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the small flower needs light in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the small flower needs light in the"
+          },
+          {
+            "id": 15,
+            "token": "garden",
+            "text": "the small flower needs light in the garden"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the small flower needs light in the garden."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the small flower needs light in the garden."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    },
+    {
+      "prompt": "the quiet",
+      "base": {
+        "prompt": "the quiet",
+        "ids": [
+          0,
+          47,
+          34,
+          45,
+          7,
+          47,
+          6,
+          22,
+          47,
+          26,
+          3,
+          1
+        ],
+        "text": "the quiet student carries the box in the library.",
+        "events": [
+          {
+            "id": 45,
+            "token": "student",
+            "text": "the quiet student"
+          },
+          {
+            "id": 7,
+            "token": "carries",
+            "text": "the quiet student carries"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet student carries the"
+          },
+          {
+            "id": 6,
+            "token": "box",
+            "text": "the quiet student carries the box"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the quiet student carries the box in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet student carries the box in the"
+          },
+          {
+            "id": 26,
+            "token": "library",
+            "text": "the quiet student carries the box in the library"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the quiet student carries the box in the library."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the quiet student carries the box in the library."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      },
+      "adapter": {
+        "prompt": "the quiet",
+        "ids": [
+          0,
+          47,
+          34,
+          45,
+          7,
+          47,
+          6,
+          22,
+          47,
+          39,
+          3,
+          1
+        ],
+        "text": "the quiet student carries the box in the room.",
+        "events": [
+          {
+            "id": 45,
+            "token": "student",
+            "text": "the quiet student"
+          },
+          {
+            "id": 7,
+            "token": "carries",
+            "text": "the quiet student carries"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet student carries the"
+          },
+          {
+            "id": 6,
+            "token": "box",
+            "text": "the quiet student carries the box"
+          },
+          {
+            "id": 22,
+            "token": "in",
+            "text": "the quiet student carries the box in"
+          },
+          {
+            "id": 47,
+            "token": "the",
+            "text": "the quiet student carries the box in the"
+          },
+          {
+            "id": 39,
+            "token": "room",
+            "text": "the quiet student carries the box in the room"
+          },
+          {
+            "id": 3,
+            "token": ".",
+            "text": "the quiet student carries the box in the room."
+          },
+          {
+            "id": 1,
+            "token": "<EOS>",
+            "text": "the quiet student carries the box in the room."
+          }
+        ],
+        "stop": "end token",
+        "decoding": "greedy"
+      }
+    }
+  ],
+  "scope": "Output-head LoRA on an existing corpus family; measures a distribution shift, not new facts"
+}

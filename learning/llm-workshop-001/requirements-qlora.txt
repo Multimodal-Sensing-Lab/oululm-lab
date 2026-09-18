@@ -1,0 +1,2 @@
+# Optional; validate CUDA/ARM wheel support on the actual GPU before using QLoRA.
+bitsandbytes==0.50.2
