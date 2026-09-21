@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this toolkit in teaching, research or development, please cite it using the reference below. For reproducibility, also record the release or commit you used."
+type: software
+title: "OuluLM Lab: Toolkits for learning and development with language models"
+authors:
+  - family-names: "Álvarez Casado"
+    given-names: "Constantino"
+    affiliation: "University of Oulu"
+repository-code: "https://github.com/Multimodal-Sensing-Lab/oululm-lab"
+url: "https://github.com/Multimodal-Sensing-Lab/oululm-lab"
+license: MIT
+abstract: "Educational and development toolkits for language models. The initial learning toolkit includes interactive character and word Transformer experiments, runnable Python examples, synthetic teaching datasets and recorded tiny-model checkpoints."
+keywords:
+  - language models
+  - transformers
+  - education
+  - interactive visualization
+  - fine-tuning
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Álvarez Casado"
+      given-names: "Constantino"
+      affiliation: "University of Oulu"
+  title: "OuluLM Lab: Toolkits for learning and development with language models"
+  year: 2026
+  url: "https://github.com/Multimodal-Sensing-Lab/oululm-lab"

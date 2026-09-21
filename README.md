@@ -27,6 +27,21 @@ Created and curated by **Dr. Constantino Álvarez Casado**, Postdoctoral Researc
 
 See the workshop [references and acknowledgements](learning/llm-workshop-001/llm_workshop/references.html) and [data provenance](learning/llm-workshop-001/data/README.md).
 
+## How to cite
+
+Álvarez Casado, C. (2026). *OuluLM Lab: Toolkits for learning and development with language models* [Computer software]. https://github.com/Multimodal-Sensing-Lab/oululm-lab
+
+```bibtex
+@software{alvarez_casado_oululm_lab_2026,
+  author = {Álvarez Casado, Constantino},
+  title = {{OuluLM Lab}: Toolkits for learning and development with language models},
+  year = {2026},
+  url = {https://github.com/Multimodal-Sensing-Lab/oululm-lab}
+}
+```
+
+For reproducibility, also record the release tag or commit hash you used. If you used the introductory workshop, identify **Workshop 001: LLM basics — Open the model** in your methods or teaching-materials description. Machine-readable citation metadata is provided in [CITATION.cff](CITATION.cff).
+
 ## License
 
 The original code and learning toolkit, including our original explanations, diagrams and tiny model weights, use the [MIT License](LICENSE). The supplied synthetic CSVs retain their documented CC0 dedication; their generator scripts use MIT. External publications and optional downloaded datasets retain their own terms; links do not relicense those works. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

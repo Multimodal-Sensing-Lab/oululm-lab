@@ -14,7 +14,7 @@ Open **[the character workshop](index.html)**. Follow its eight chapters; use th
 - [Glossary with examples](llm_workshop/glossary.html)
 - [Detailed reading](llm_workshop/001_text_to_predictions/walkthrough.html)
 - [Python lab and scripts](llm_workshop/python-lab.html)
-- [References and acknowledgements](llm_workshop/references.html)
+- [References and acknowledgements](llm_workshop/references.html) · [Full bibliography (Markdown)](REFERENCES.md)
 - [Dataset provenance](data/README.md) · [Checkpoint inventory](runs/README.md)
 
 ## Python setup
@@ -77,9 +77,11 @@ Browser tests require Node.js and Chrome/Chromium; set `CHROME_BIN` for another 
 
 ## Attribution and supporting material
 
+To cite this workshop, use the [repository citation and BibTeX entry](../../README.md#how-to-cite) and identify **Workshop 001: LLM basics — Open the model**, together with the release or commit used.
+
 Created and curated by **Dr. Constantino Álvarez Casado**, Postdoctoral Researcher, University of Oulu. The code was developed mostly with AI assistance from **ChatGPT 5.6 Sol, 6 Astra, and Claude Opus 5**, together with the author. These tool/model names are recorded as supplied by the author. The author selected the educational goals, iterated on the implementation and reviewed the examples. AI assistance does not guarantee correctness; inspect the code, tests and measured outputs.
 
-Adapted teaching context from the supplied **OpinTori (Constantino Alvarez, 2026)** and scoping-review presentation. Additional sources include Stanford CS324, the original Transformer paper, Jay Alammar, 3Blue1Brown, Transformer Explainer, Brendan Bycroft and the Q/K/V article by David Epstein. The [reference page](llm_workshop/references.html) preserves source links and distinguishes original implementation from inspiration.
+Adapted teaching context from the supplied **OpinTori (Constantino Alvarez, 2026)** and scoping-review presentation. Additional sources include Stanford CS324, the original Transformer paper, Jay Alammar, 3Blue1Brown, Transformer Explainer, Brendan Bycroft and the Q/K/V article by Ebrahim Pichka. The [reference page](llm_workshop/references.html) preserves source links and distinguishes original implementation from inspiration.
 
 ## License
 
