@@ -1,4 +1,4 @@
-# OuluLLM Lab
+# OuluLM Lab
 
 <img src="assets/oululm-lab-logo-auroras.png" alt="OuluLLM Lab — northern lights and forest" width="960">
 
